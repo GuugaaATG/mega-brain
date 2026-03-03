@@ -716,14 +716,15 @@ JARVIS PIPELINE COMPLETE: $SOURCE_PERSON ($SOURCE_ID)
 ```
 LOG: "Atualizando índice RAG..."
 
-EXECUTE: python scripts/rag_index.py --knowledge --force
+EXECUTE: python3 -m core.intelligence.rag.hybrid_index --bm25-only
+EXECUTE: python3 -m core.intelligence.rag.graph_builder --build
 
--> Re-indexa toda a knowledge base com os novos arquivos
--> Flag --force garante que arquivos modificados sejam reprocessados
--> Esperar conclusão antes de prosseguir
+-> Rebuild BM25 index com todos os chunks da knowledge base
+-> Rebuild Knowledge Graph com entidades e relacoes dos DNAs
+-> Esperar conclusao antes de prosseguir
 
-VERIFY: Output deve mostrar arquivos indexados
-LOG: "RAG index atualizado: {files_indexed} arquivos"
+VERIFY: Output deve mostrar chunks indexados e entities/edges
+LOG: "RAG index atualizado: {chunks} chunks, {entities} entities, {edges} edges"
 ```
 
 ### Step 8.2 - Update File Registry
@@ -1900,20 +1901,21 @@ LOG: "Executando finalizações automáticas..."
 
 LOG: "Executando indexação RAG consolidada..."
 
-# INDEXAR KNOWLEDGE BASE COMPLETA
-EXECUTE: python scripts/rag_index.py --knowledge --force
+# REBUILD BM25 INDEX (todos os chunks da knowledge base)
+EXECUTE: python3 -m core.intelligence.rag.hybrid_index --bm25-only
 CAPTURE output
-LOG: "RAG Knowledge: {files_indexed} arquivos indexados"
+LOG: "RAG BM25: {chunks_count} chunks indexados"
 
-# INDEXAR DOSSIÊS (consolidado de Phase 6.5.4)
-FOR each dossier in DOSSIERS_TO_INDEX.persons:
-  EXECUTE: python scripts/rag_index.py --file {dossier} --collection dossiers_persons
+# REBUILD KNOWLEDGE GRAPH (entidades e relacoes dos DNAs)
+EXECUTE: python3 -m core.intelligence.rag.graph_builder --build
+CAPTURE output
+LOG: "RAG Graph: {entities} entities, {edges} edges"
 
-FOR each dossier in DOSSIERS_TO_INDEX.themes:
-  EXECUTE: python scripts/rag_index.py --file {dossier} --collection dossiers_themes
+# STATS para verificacao
+EXECUTE: python3 -m core.intelligence.rag.chunker --stats
+EXECUTE: python3 -m core.intelligence.rag.graph_builder --stats
 
-LOG: "RAG Dossiês: {persons_count} pessoas, {themes_count} temas"
-LOG: "RAG Index TOTAL: {total_files} arquivos indexados"
+LOG: "RAG Index TOTAL: {chunks_count} chunks, {entities} entities, {edges} edges"
 
 ═══════════════════════════════════════════════════════════════════════════
 9.5.2 - FILE REGISTRY

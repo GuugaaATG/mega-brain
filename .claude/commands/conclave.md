@@ -29,6 +29,18 @@ Executa o fluxo completo: debate entre cargos + meta-avaliacao pelo conselho (CR
 > **Workflow:** `core/workflows/wf-conclave.yaml`
 > **Templates:** `core/templates/debates/`
 > **Agents:** `agents/conclave/`
+> **Smart Context:** `core/intelligence/query_analyzer.py` + `context_assembler.py`
+
+### PRE-CONCLAVE: Smart Context Assembly
+
+ANTES de iniciar qualquer fase, executar:
+
+1. **Analise da query** via `core/intelligence/query_analyzer.py`:
+   - Detectar dominios e agentes relevantes
+2. **Montar contexto trimado** via `core/intelligence/context_assembler.py`:
+   - MEMORY.md de cada agente: apenas secoes relevantes ao tema
+   - Budget total: ~150KB (vs 1.1MB+ em full load)
+3. **Reportar economia** no header do conselho
 
 ```
 ═══════════════════════════════════════════════════════════════════════════════
@@ -38,6 +50,7 @@ SESSAO DO CONSELHO
 QUERY: {pergunta ou decisao}
 DATA: {data atual}
 VALOR EM RISCO: R$ {estimativa se possivel}
+CONTEXTO: {X}KB trimado (vs {Y}KB full, reducao {Z}%)
 
 ═══════════════════════════════════════════════════════════════════════════════
 FASE 0: FUNDAMENTO CONSTITUCIONAL

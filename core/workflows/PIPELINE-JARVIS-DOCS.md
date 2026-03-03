@@ -472,8 +472,9 @@ LOG: Registrar em EVOLUTION-LOG.md se trigger ativado
 
 ### 8.1 - Automatic Actions
 ```
-8.1.1 RAG INDEX
-  EXECUTE: python scripts/rag_index.py --knowledge --force
+8.1.1 RAG INDEX REBUILD
+  EXECUTE: python3 -m core.intelligence.rag.hybrid_index --bm25-only
+  EXECUTE: python3 -m core.intelligence.rag.graph_builder --build
 
 8.1.2 FILE REGISTRY
   EXECUTE: python scripts/file_registry.py --scan

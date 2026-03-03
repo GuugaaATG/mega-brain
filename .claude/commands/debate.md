@@ -30,6 +30,7 @@ Simula debate estruturado entre agentes de cargo, gerando sintese com consensos 
 > **Workflow:** `core/workflows/wf-conclave.yaml` (phase 1)
 > **Templates:** `core/templates/debates/debate-protocol.md`
 > **Agents:** `agents/cargo/` (by role)
+> **Smart Context:** `core/intelligence/query_analyzer.py` + `context_assembler.py`
 
 ```
 ═══════════════════════════════════════════════════════════════════════════════
@@ -39,15 +40,36 @@ PARTICIPANTES: {lista de cargos}
 ═══════════════════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│ FASE 0: SMART CONTEXT ASSEMBLY (pre-debate)                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+ANTES de carregar qualquer agente, executar analise da query:
+
+1. ANALISAR QUERY via core/intelligence/query_analyzer.py:
+   - Detectar dominios relevantes (vendas, compensation, etc.)
+   - Identificar agentes mencionados explicitamente
+   - Se cargos NAO foram especificados, recomendar com base nos dominios
+
+2. MONTAR CONTEXTO TRIMADO via core/intelligence/context_assembler.py:
+   - AGENT.md: primeiras 50 linhas (identidade)
+   - SOUL.md: completo (voz)
+   - DNA-CONFIG.yaml: completo (routing)
+   - MEMORY.md: APENAS secoes relevantes aos dominios detectados
+   - Budget: ~30KB por agente, ~150KB total
+
+3. REPORTAR economia:
+   "Contexto: {X}KB (vs {Y}KB full load, reducao {Z}%)"
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │ FASE 1: POSICOES INDIVIDUAIS                                                │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 PARA CADA CARGO:
 
-1. CARREGAR:
+1. CARREGAR (via Smart Context Assembly - JA TRIMADO):
    - BASE-CONSTITUTION.md
-   - DNA-CONFIG.yaml do cargo (se existir)
-   - MEMORY.md do cargo (se existir)
+   - DNA-CONFIG.yaml do cargo (completo)
+   - MEMORY.md do cargo (secoes relevantes apenas)
 
 2. APLICAR REASONING-MODEL-PROTOCOL.md
 
