@@ -11,7 +11,7 @@ const PRO_INDICATORS = [
   'knowledge/dossiers/persons',
   'knowledge/playbooks',
   'knowledge/dna',
-  'agents/persons',
+  'agents/minds',
   'agents/cargo',
 ];
 

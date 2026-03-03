@@ -569,7 +569,7 @@ function ensureDirectories(root) {
     'logs/sessions',
     'logs/batches',
     'logs/decisions',
-    'agents/persons',
+    'agents/minds',
     'agents/cargo',
     'agents/sua-empresa/org',
     'agents/sua-empresa/roles',
