@@ -7,9 +7,18 @@ research/
 bilhon/
 .bilhon/
 
-# === INTEGRATED CONTENT (tracked, pushable) ===
-# Previously gitignored — now tracked per founder directive.
-# Internal references to source repo cleaned.
+# === AIOS COMMANDS & AGENTS (L3 — per-user configuration) ===
+.claude/commands/AIOS/
+.claude/commands/bilhon-docs/
+.claude/commands/doc-master/
+.claude/commands/mmos-squad/
+.claude/commands/mmosMapper/
+.claude/commands/synapse/
+.claude/commands/Ralph/
+.claude/commands/save/
+.claude/commands/resume/
+.claude/commands/sessions/
+.claude/rules/aios-native-knowledge.md
 
 # === ENVIRONMENT & SECRETS ===
 .env
