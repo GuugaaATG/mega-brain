@@ -1,7 +1,7 @@
 # Mega Brain Layer Audit Report
 
 **Generated:** 2026-02-27T21:07:59.716881Z
-**Repository:** /Users/thiagofinch/Documents/Projects/mega-brain
+**Repository:** mega-brain
 **Total Items Classified:** 8799
 
 ## Summary
