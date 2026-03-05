@@ -2,7 +2,7 @@
 
 > **Versão:** 1.6.0
 > **Pipeline:** Jarvis → Etapa 4.0 (antes de SOURCES)
-> **Output:** `/knowledge/dossiers/persons/` e `/knowledge/dossiers/THEMES/`
+> **Output:** `/knowledge/external/dossiers/persons/` e `/knowledge/external/dossiers/THEMES/`
 > **Protocolo de Escrita:** `NARRATIVE-METABOLISM-PROTOCOL.md` (OBRIGATÓRIO)
 > **Próxima Etapa:** SOURCES-COMPILATION-PROTOCOL.md (Phase 6.6)
 > **Navegação:** 5 NÍVEIS (lê DOSSIER → NARRATIVE → INSIGHT → CANONICAL → CHUNK)
@@ -550,7 +550,7 @@ _(Cada link leva ao que esta pessoa específica disse sobre este tema)_
 
 ### Dossiês de Pessoas:
 ```
-/knowledge/dossiers/persons/DOSSIER-{NOME-CANONICO}.md
+/knowledge/external/dossiers/persons/DOSSIER-{NOME-CANONICO}.md
 ```
 - Nome em UPPERCASE
 - Espaços substituídos por hífen
@@ -558,7 +558,7 @@ _(Cada link leva ao que esta pessoa específica disse sobre este tema)_
 
 ### Dossiês de Temas:
 ```
-/knowledge/dossiers/THEMES/DOSSIER-{NOME-TEMA}.md
+/knowledge/external/dossiers/THEMES/DOSSIER-{NOME-TEMA}.md
 ```
 - Nome em UPPERCASE
 - Espaços substituídos por hífen
@@ -598,7 +598,7 @@ Este protocolo é executado pela PHASE 6.5 do process-jarvis.md.
 ```
 FOR each PERSON in NARRATIVES_STATE.persons:
 
-  DOSSIER_PATH = /knowledge/dossiers/persons/DOSSIER-{NOME_UPPERCASE}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/persons/DOSSIER-{NOME_UPPERCASE}.md
 
   IF file EXISTS at DOSSIER_PATH:
     MODE = "INCREMENTAL"
@@ -618,7 +618,7 @@ FOR each THEME in NARRATIVES_STATE.themes:
   # CRIAR DOSSIÊ PARA TODO TEMA, SEM EXCEÇÃO
   # O sistema digestivo CAPTURA TUDO - agentes decidem relevância depois
 
-  DOSSIER_PATH = /knowledge/dossiers/THEMES/DOSSIER-{TEMA_UPPERCASE}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/THEMES/DOSSIER-{TEMA_UPPERCASE}.md
 
   IF file EXISTS at DOSSIER_PATH:
     MODE = "INCREMENTAL"
@@ -723,13 +723,13 @@ Antes de salvar dossiê:
 VALIDAR APÓS EXECUTAR:
 
 # PESSOA (obrigatório - TODOS)
-[ ] CP-POST-6.A: /knowledge/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md existe
+[ ] CP-POST-6.A: /knowledge/external/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md existe
 [ ] CP-POST-6.B: Dossiê contém seção "PERFIL EXECUTIVO"
 [ ] CP-POST-6.C: Dossiê contém seção "ÍNDICE DE FONTES"
 
 # TEMA (obrigatório - TODOS, SEM THRESHOLD)
 [ ] CP-POST-6.D: Para CADA TEMA em NARRATIVES_STATE.themes:
-                 /knowledge/dossiers/THEMES/DOSSIER-{TEMA}.md DEVE existir
+                 /knowledge/external/dossiers/THEMES/DOSSIER-{TEMA}.md DEVE existir
                  (NÃO HÁ THRESHOLD - TODO tema gera dossiê)
 [ ] CP-POST-6.E: Dossiê de tema contém seção "SÍNTESE EXECUTIVA"
 [ ] CP-POST-6.F: Dossiê de tema contém seção "POSIÇÕES POR PESSOA"

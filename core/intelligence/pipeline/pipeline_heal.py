@@ -291,7 +291,7 @@ class PipelineHealDetector:
 
     def _check_person_dossier(self, sid: str, slug: str) -> CheckResult:
         """P6.2: Verify DOSSIER-{PERSON}.md exists."""
-        dossier_dir = self.root / "knowledge" / "dossiers" / "persons"
+        dossier_dir = self.root / "knowledge" / "external" / "dossiers" / "persons"
         if not dossier_dir.exists():
             return CheckResult(
                 "P6.2", "Person Dossier", False,
@@ -315,7 +315,7 @@ class PipelineHealDetector:
 
     def _check_theme_dossiers(self, sid: str) -> CheckResult:
         """P6.3: Verify theme dossiers reference this source."""
-        theme_dir = self.root / "knowledge" / "dossiers" / "themes"
+        theme_dir = self.root / "knowledge" / "external" / "dossiers" / "themes"
         if not theme_dir.exists():
             return CheckResult(
                 "P6.3", "Theme Dossiers", False,
@@ -463,7 +463,7 @@ class PipelineHealDetector:
 
     def _check_dna(self, sid: str, slug: str) -> CheckResult:
         """P8.1.8: Verify DNA exists if dossier density >= 3/5."""
-        dna_dir = self.root / "knowledge" / "dna" / "persons" / slug
+        dna_dir = self.root / "knowledge" / "external" / "dna" / "persons" / slug
         if dna_dir.exists():
             yaml_files = list(dna_dir.glob("*.yaml"))
             return CheckResult(
@@ -533,7 +533,7 @@ class PipelineHealDetector:
 
         Sections checked: TL;DR / Philosophy / Modus Operandi / Arsenal / Traps
         """
-        dossier_dir = self.root / "knowledge" / "dossiers" / "persons"
+        dossier_dir = self.root / "knowledge" / "external" / "dossiers" / "persons"
         if not dossier_dir.exists():
             return 0
 

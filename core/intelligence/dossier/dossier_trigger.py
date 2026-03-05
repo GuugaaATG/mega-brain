@@ -39,7 +39,7 @@ from entity_normalizer import load_registry, save_registry
 BASE_DIR = Path(__file__).parent.parent
 TRIGGER_CONFIG_PATH = BASE_DIR / "scripts" / "trigger_config.yaml"
 TRIGGERS_LOG_PATH = BASE_DIR / "logs" / "triggers.jsonl"
-DOSSIERS_THEMES_DIR = BASE_DIR / "knowledge" / "dossiers" / "themes"
+DOSSIERS_THEMES_DIR = BASE_DIR / "knowledge" / "external" / "dossiers" / "themes"
 
 # ---------------------------------------------------------------------------
 # CONFIG

@@ -34,8 +34,8 @@ from core.intelligence.entities.entity_normalizer import load_registry, save_reg
 BASE_DIR = Path(__file__).parent.parent
 INSIGHTS_DIR = BASE_DIR / "processing" / "insights"
 CHUNKS_DIR = BASE_DIR / "processing" / "chunks"
-SKILLS_OUTPUT_DIR = BASE_DIR / "knowledge" / "dna" / "skills"
-SKILLS_REGISTRY_PATH = BASE_DIR / "knowledge" / "dna" / "_dna-skills-registry.yaml"
+SKILLS_OUTPUT_DIR = BASE_DIR / "knowledge" / "external" / "dna" / "skills"
+SKILLS_REGISTRY_PATH = BASE_DIR / "knowledge" / "external" / "dna" / "_dna-skills-registry.yaml"
 
 # ---------------------------------------------------------------------------
 # FRAMEWORK EXTRACTION PATTERNS

@@ -29,7 +29,7 @@ from entity_normalizer import load_registry, save_registry
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).parent.parent
 REVIEW_QUEUE_PATH = BASE_DIR / "processing" / "canonical" / "review_queue.jsonl"
-SKILLS_REGISTRY_PATH = BASE_DIR / "knowledge" / "dna" / "_dna-skills-registry.yaml"
+SKILLS_REGISTRY_PATH = BASE_DIR / "knowledge" / "external" / "dna" / "_dna-skills-registry.yaml"
 REVIEW_LOG_PATH = BASE_DIR / "logs" / "review_decisions.jsonl"
 
 # ---------------------------------------------------------------------------

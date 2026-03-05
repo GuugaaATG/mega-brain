@@ -25,7 +25,7 @@ from typing import Dict, List, Optional, Set
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # mega-brain/
 NAV_MAP_PATH = BASE_DIR / "knowledge" / "NAVIGATION-MAP.json"
-DOSSIERS_DIR = BASE_DIR / "knowledge" / "dossiers"
+DOSSIERS_DIR = BASE_DIR / "knowledge" / "external" / "dossiers"
 
 # Patterns for chunk_id references in dossier content
 # Matches: CG001_010, AH-YT007_001, chunk_199, BATCH-041, etc.

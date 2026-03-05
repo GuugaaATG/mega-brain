@@ -34,7 +34,7 @@ Sincronizar arquivos .md selecionados com:
 ```
 - Listar .md disponiveis em locais comuns:
   - `[SUA EMPRESA]-CORE/templates/`
-  - `[SUA EMPRESA]-CORE/knowledge/playbooks/`
+  - `[SUA EMPRESA]-CORE/knowledge/external/playbooks/`
   - `.aiox/docs/standards/`
 - Usuario seleciona arquivo(s) para sincronizar
 
@@ -133,7 +133,7 @@ Localizado em: `.claude/skills/sync-docs/config.json`
 | Origem Local | Destino Google Drive |
 |--------------|---------------------|
 | `[SUA EMPRESA]-CORE/templates/` | Shared Drive > Templates |
-| `[SUA EMPRESA]-CORE/knowledge/playbooks/` | Shared Drive > Playbooks |
+| `[SUA EMPRESA]-CORE/knowledge/external/playbooks/` | Shared Drive > Playbooks |
 | `.aiox/docs/standards/` | Shared Drive > Standards |
 
 ---

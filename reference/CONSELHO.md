@@ -127,7 +127,7 @@ Senhor, aqui está o ORGANOGRAMA COMPLETO do /council:
 │         │           │    │    ONDE BUSCAM INFO:        │    │           │                        │
 │         │           │    │                             │    │           │                        │
 │         │           │    │  1. DNA dos especialistas   │    │           │                        │
-│         │           │    │     └── /knowledge/dna/  │    │           │                        │
+│         │           │    │     └── /knowledge/external/dna/  │    │           │                        │
 │         │           │    │                             │    │           │                        │
 │         │           │    │  2. DOSSIERS                │    │           │                        │
 │         │           │    │     └── /knowledge/      │    │           │                        │
@@ -298,7 +298,7 @@ Ordem	Arquivo	Propósito
 │                                                                                                 │
 │   ┌───────────────────────────────────────────────────────────────────────────────────────────┐│
 │   │  🧬 DNA DOS ESPECIALISTAS                                                                 ││
-│   │  /knowledge/dna/                                                                       ││
+│   │  /knowledge/external/dna/                                                                       ││
 │   │  ├── COLE-GORDON/          → High-ticket, High-ticket Sales, certificação                       ││
 │   │  ├── JEREMY-HAYNES/        → Paid media, funis, scaling                                  ││
 │   │  ├── JEREMY-MINER/         → NEPQ, perguntas, tonalidade                                 ││
@@ -307,7 +307,7 @@ Ordem	Arquivo	Propósito
 │                                                                                                 │
 │   ┌───────────────────────────────────────────────────────────────────────────────────────────┐│
 │   │  📚 DOSSIÊS CONSOLIDADOS                                                                  ││
-│   │  /knowledge/dossiers/                                                                  ││
+│   │  /knowledge/external/dossiers/                                                                  ││
 │   │  ├── PERSONS/              → Dossiê de cada especialista                                 ││
 │   │  └── THEMES/               → Dossiês temáticos (NEPQ, Call Funnels, etc.)                ││
 │   └───────────────────────────────────────────────────────────────────────────────────────────┘│

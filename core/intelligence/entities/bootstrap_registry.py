@@ -208,7 +208,7 @@ def bootstrap_persons(registry):
             if normalize_text(k) == normalize_text(person_name):
                 persons[k]["has_dossier"] = True
                 slug = person_name.upper().replace(" ", "-")
-                persons[k]["dossier_path"] = f"knowledge/dossiers/persons/DOSSIER-{slug}.md"
+                persons[k]["dossier_path"] = f"knowledge/external/dossiers/persons/DOSSIER-{slug}.md"
                 break
 
     return len(persons)
@@ -338,7 +338,7 @@ def bootstrap_themes(registry):
                 "occurrence_count": 0,
                 "sources": [],
                 "has_dossier": True,
-                "dossier_path": f"knowledge/dossiers/themes/{dossier_name}.md",
+                "dossier_path": f"knowledge/external/dossiers/themes/{dossier_name}.md",
                 "domain_ids": inferred_domains,
                 "related_roles": [],
                 "status": "active",

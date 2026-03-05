@@ -478,7 +478,7 @@ LOG: "Compilando {len(PERSONS)} pessoas e {len(THEMES)} temas"
 FOR each PERSON_NAME in PERSONS_TO_COMPILE:
 
   PERSON_DATA = NARRATIVES_DATA.narratives_state.persons[PERSON_NAME]
-  DOSSIER_PATH = /knowledge/dossiers/persons/DOSSIER-{PERSON_NAME_UPPERCASE}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/persons/DOSSIER-{PERSON_NAME_UPPERCASE}.md
 
   IF DOSSIER_PATH exists:
     READ existing_dossier
@@ -505,7 +505,7 @@ FOR each PERSON_NAME in PERSONS_TO_COMPILE:
 FOR each THEME_NAME in THEMES_TO_COMPILE:
 
   THEME_DATA = NARRATIVES_DATA.narratives_state.themes[THEME_NAME]
-  DOSSIER_PATH = /knowledge/dossiers/THEMES/DOSSIER-{THEME_NAME_UPPERCASE}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/THEMES/DOSSIER-{THEME_NAME_UPPERCASE}.md
 
   IF DOSSIER_PATH exists:
     MODE = "INCREMENTAL"
@@ -1705,8 +1705,8 @@ STEP 7.4.0 - CARREGAR TODOS OS 5 NÍVEIS PARA ENRIQUECIMENTO RICO
 # Agentes devem ser alimentados com a MÁXIMA profundidade disponível
 
 # NÍVEL 5 - DOSSIERS (mais consolidado)
-READ /knowledge/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md as DOSSIER_DATA
-READ /knowledge/dossiers/THEMES/DOSSIER-{RELEVANT_THEMES}.md as THEME_DOSSIERS
+READ /knowledge/external/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md as DOSSIER_DATA
+READ /knowledge/external/dossiers/THEMES/DOSSIER-{RELEVANT_THEMES}.md as THEME_DOSSIERS
 
 # NÍVEL 4 - NARRATIVES
 READ /processing/narratives/NARRATIVES-STATE.json as NARRATIVES_DATA
@@ -1789,8 +1789,8 @@ FOR each AGENT in agents_impacted:
       - **Colabora com:** {agents do mesmo nível}
 
       #### Fontes para Consulta Profunda
-      - DOSSIER: `/knowledge/dossiers/persons/DOSSIER-{PERSON}.md`
-      - THEME: `/knowledge/dossiers/THEMES/DOSSIER-{THEME}.md`
+      - DOSSIER: `/knowledge/external/dossiers/persons/DOSSIER-{PERSON}.md`
+      - THEME: `/knowledge/external/dossiers/THEMES/DOSSIER-{THEME}.md`
       - Chunks: {list of relevant chunk_ids}
 
     WRITE MEMORY_PATH
@@ -1986,8 +1986,8 @@ IF structural_change_occurred (new agent, new protocol, new pattern):
 READ /agents/DISCOVERY/role-tracking.md
 
 # NÍVEL 5 - DOSSIERS (mais consolidado)
-DOSSIERS_PERSONS = LIST /knowledge/dossiers/persons/DOSSIER-*.md
-DOSSIERS_THEMES = LIST /knowledge/dossiers/THEMES/DOSSIER-*.md
+DOSSIERS_PERSONS = LIST /knowledge/external/dossiers/persons/DOSSIER-*.md
+DOSSIERS_THEMES = LIST /knowledge/external/dossiers/THEMES/DOSSIER-*.md
 
 # NÍVEL 4 - NARRATIVES
 READ /processing/narratives/NARRATIVES-STATE.json as NARRATIVES_DATA
@@ -2319,7 +2319,7 @@ LOG: "Verificando necessidade de atualização de DNA Cognitivo..."
 # ─────────────────────────────────────────────────────────────────────────
 # FASE 1: VERIFICAR SE PESSOA TEM DNA EXISTENTE
 # ─────────────────────────────────────────────────────────────────────────
-DNA_BASE_PATH = /knowledge/dna/persons/{SOURCE_PERSON_NORMALIZED}
+DNA_BASE_PATH = /knowledge/external/dna/persons/{SOURCE_PERSON_NORMALIZED}
 
 IF DNA_BASE_PATH exists:
   MODE = "UPDATE"
@@ -2337,7 +2337,7 @@ IF DNA_BASE_PATH exists:
 
 ELSE:
   # Verificar se há material suficiente para CRIAÇÃO AUTOMÁTICA de DNA
-  PERSON_DOSSIER = /knowledge/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md
+  PERSON_DOSSIER = /knowledge/external/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md
 
   IF PERSON_DOSSIER exists:
     DOSSIER_CONTENT = READ PERSON_DOSSIER
@@ -2351,7 +2351,7 @@ ELSE:
       LOG: "🧬 DNA EXTRACTION AUTOMÁTICA: {SOURCE_PERSON} (densidade {DOSSIER_DENSITY}/5)"
 
       # Criar diretório do DNA
-      DNA_BASE_PATH = /knowledge/dna/persons/{SOURCE_PERSON_NORMALIZED}
+      DNA_BASE_PATH = /knowledge/external/dna/persons/{SOURCE_PERSON_NORMALIZED}
       CREATE DIRECTORY DNA_BASE_PATH
 
       # Carregar fontes para extração rica (5 níveis)
@@ -2550,7 +2550,7 @@ ELSE:
 IF MODE == "UPDATE":
 
   # Navegar DOSSIER → NARRATIVES → INSIGHTS → CHUNKS para extração rica
-  DOSSIER_PATH = /knowledge/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/persons/DOSSIER-{SOURCE_PERSON}.md
   DOSSIER_CONTENT = READ DOSSIER_PATH
 
   # Extrair elementos por camada (seguindo DNA-EXTRACTION-PROTOCOL)

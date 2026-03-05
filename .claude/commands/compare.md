@@ -31,10 +31,10 @@ Compara as perspectivas de 2+ pessoas sobre uma pergunta, mostrando convergencia
 1. PARA CADA PESSOA na lista:
 
    a) CARREGAR DNA (se existir):
-      /knowledge/dna/persons/{PESSOA}/
+      /knowledge/external/dna/persons/{PESSOA}/
 
    b) SE NAO existir DNA, carregar DOSSIER:
-      /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+      /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
 
    c) IDENTIFICAR posicao sobre a pergunta:
       - Buscar heuristicas relevantes

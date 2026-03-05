@@ -32,7 +32,7 @@ Visualiza o DNA Cognitivo extraido de uma pessoa ou dominio agregado.
 
 ```
 1. VERIFICAR se DNA existe:
-   /knowledge/dna/persons/{PESSOA}/
+   /knowledge/external/dna/persons/{PESSOA}/
 
    SE NAO existir:
      "DNA de {PESSOA} ainda nao foi extraido.
@@ -93,7 +93,7 @@ FONTES UTILIZADAS:
 
 ```
 1. VERIFICAR se agregado existe:
-   /knowledge/dna/AGGREGATED/AGG-{DOMINIO}.yaml
+   /knowledge/external/dna/AGGREGATED/AGG-{DOMINIO}.yaml
 
    SE NAO existir:
      "Agregacao do dominio {DOMINIO} ainda nao foi criada.

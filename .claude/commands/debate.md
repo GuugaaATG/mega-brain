@@ -25,6 +25,59 @@ Simula debate estruturado entre agentes de cargo, gerando sintese com consensos 
 
 ---
 
+## Modo 3D (Tridimensional)
+
+O Debate opera em 3 dimensoes de contexto:
+
+| Modo | Buckets | Quando Usar |
+|------|---------|-------------|
+| `expert-only` | B1 (External) | Perguntas teoricas / aprendizado |
+| `business` | B1 + B2 (External + Workspace) | Decisoes de negocio |
+| `full-3d` | B1 + B2 + B3 (Todos) | Decisoes estrategicas pessoais |
+| `personal` | B3 (Personal) | Reflexao pessoal |
+| `company-only` | B2 (Workspace) | Analise operacional |
+
+### Leitura em Boxes Individuais
+
+Cada cargo participante DEVE ler os buckets permitidos pelo modo:
+- **B1 (External):** knowledge/external/dna/, knowledge/external/dossiers/, knowledge/external/playbooks/
+- **B2 (Workspace):** knowledge/workspace/, logs/WORKSPACE-LOG-TEMPLATE.md
+- **B3 (Personal):** knowledge/personal/, logs/PERSONAL-LOG-TEMPLATE.md
+
+Os cargos NAO podem acessar buckets fora do modo selecionado.
+
+### Resposta com Contexto Parcial
+
+Se um bucket NAO esta disponivel no modo selecionado:
+- O cargo DEVE declarar: "Sem acesso ao bucket [X] neste modo"
+- Recomendar modo mais amplo se necessario: "Para esta decisao, recomendo modo `business` ou `full-3d`"
+- NUNCA inventar dados de buckets nao acessados
+
+### Dados Numericos Reais
+
+Quando em modo `business` ou `full-3d`:
+- Cargos DEVEM consultar dados reais do workspace (MRR, CAC, LTV, etc.)
+- Caminhos: knowledge/workspace/_finance/, WORKSPACE-LOG-TEMPLATE.md
+- Se dados nao existem, declarar: "Dados financeiros nao conectados"
+
+### Secao Obrigatoria na Sintese
+
+A sintese do debate (Fase 3) DEVE incluir footer:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  CONTEXTO UTILIZADO                                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Modo: {modo selecionado}                                                   │
+│  B1 (Expert):    {SIM/NAO} - {N arquivos consultados}                      │
+│  B2 (Business):  {SIM/NAO} - {N arquivos consultados}                      │
+│  B3 (Personal):  {SIM/NAO} - {N arquivos consultados}                      │
+│  Dados reais:    {SIM/NAO} - {quais metricas}                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## INSTRUCOES DE EXECUCAO
 
 > **Workflow:** `core/workflows/wf-conclave.yaml` (phase 1)

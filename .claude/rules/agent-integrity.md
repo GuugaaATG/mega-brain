@@ -213,7 +213,7 @@ PROIBIDO:
 OBRIGATORIO:
 - Contar linhas reais em MEMORY.md
 - Contar entradas em DNA-CONFIG.yaml
-- Listar arquivos existentes em /knowledge/dna/
+- Listar arquivos existentes em /knowledge/external/dna/
 ```
 
 **Mecanismo de Derivacao:**
@@ -222,7 +222,7 @@ OBRIGATORIO:
 |---------|---------------|----------------|
 | Total de insights | Contar tabelas em MEMORY.md secao APRENDIZADOS | AGENT.md + atualizar quando MEMORY muda |
 | Total de fontes | Contar entradas em DNA-CONFIG.yaml | AGENT.md + atualizar quando DNA-CONFIG muda |
-| Arquivos DNA | Listar arquivos em /knowledge/dna/persons/{fontes}/ | AGENT.md secao MAPA DE NAVEGACAO |
+| Arquivos DNA | Listar arquivos em /knowledge/external/dna/persons/{fontes}/ | AGENT.md secao MAPA DE NAVEGACAO |
 | Decisoes padrao | Contar linhas em MEMORY.md secao PADROES DECISORIOS | AGENT.md + atualizar quando MEMORY muda |
 
 ---
@@ -430,13 +430,13 @@ RESULTADO: Nenhum arquivo fica "órfão" de atualizações.
 │   │                             ├── MINHA FORMACAO                         │
 │   │                             └── PROFUNDIDADE DISPONIVEL                │
 │   │                                                                         │
-│   /knowledge/dna/* ────────→ MAPA DE NAVEGACAO GRANULAR                 │
+│   /knowledge/external/dna/* ────────→ MAPA DE NAVEGACAO GRANULAR                 │
 │   │                             └── DNA Cognitivo por Pessoa               │
 │   │                                                                         │
 │   /knowledge/SOURCES/* ────→ MAPA DE NAVEGACAO GRANULAR                 │
 │   │                             └── SOURCES Granulares                     │
 │   │                                                                         │
-│   /knowledge/dossiers/* ───→ MAPA DE NAVEGACAO GRANULAR                 │
+│   /knowledge/external/dossiers/* ───→ MAPA DE NAVEGACAO GRANULAR                 │
 │                                 └── Dossiês Consolidados                   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -489,7 +489,7 @@ ANTES de escrever qualquer coisa em AGENT.md:
 1. Ler SOUL.md completo
 2. Ler MEMORY.md completo
 3. Ler DNA-CONFIG.yaml completo
-4. Listar arquivos em /knowledge/dna/persons/{fontes}/
+4. Listar arquivos em /knowledge/external/dna/persons/{fontes}/
 5. Listar arquivos em /knowledge/SOURCES/ relevantes
 ```
 

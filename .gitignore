@@ -202,10 +202,10 @@ core/intelligence/speakers/*.pkl
 
 # Pessoas internas — dados L3 (nunca rastrear)
 # Colaboradores, parceiros, pessoas internas à operação
-knowledge/dossiers/persons/*-PEDRO-*.md
-knowledge/dossiers/persons/*-VALERIO-*.md
-knowledge/sources/pedro*/
-knowledge/sources/valerio*/
+knowledge/external/dossiers/persons/*-PEDRO-*.md
+knowledge/external/dossiers/persons/*-VALERIO-*.md
+knowledge/external/sources/pedro*/
+knowledge/external/sources/valerio*/
 agents/persons/pedro*/
 agents/persons/valerio*/
 inbox/pedro*/
@@ -449,23 +449,44 @@ squads/
 !inbox/.gitkeep
 !inbox/README.md
 
-# Knowledge scaffolding L1
+# Knowledge scaffolding L1 (bucket structure)
 !knowledge/
 !knowledge/README.md
 !knowledge/NAVIGATION-MAP.json
-!knowledge/dossiers/
-!knowledge/dossiers/persons/
-!knowledge/dossiers/persons/.gitkeep
-!knowledge/dossiers/themes/
-!knowledge/dossiers/themes/.gitkeep
-!knowledge/dossiers/system/
-!knowledge/dossiers/system/.gitkeep
-!knowledge/playbooks/
-!knowledge/playbooks/.gitkeep
-!knowledge/sources/
-!knowledge/sources/.gitkeep
-!knowledge/dna/
-!knowledge/dna/.gitkeep
+!knowledge/external/
+!knowledge/external/README.md
+!knowledge/external/index.md
+!knowledge/external/dossiers/
+!knowledge/external/dossiers/persons/
+!knowledge/external/dossiers/persons/.gitkeep
+!knowledge/external/dossiers/themes/
+!knowledge/external/dossiers/themes/.gitkeep
+!knowledge/external/dossiers/system/
+!knowledge/external/dossiers/system/.gitkeep
+!knowledge/external/playbooks/
+!knowledge/external/playbooks/.gitkeep
+!knowledge/external/sources/
+!knowledge/external/sources/.gitkeep
+!knowledge/external/dna/
+!knowledge/external/dna/.gitkeep
+!knowledge/external/inbox/
+!knowledge/external/inbox/.gitkeep
+
+# Knowledge workspace scaffolding L1/L2
+!knowledge/workspace/
+!knowledge/workspace/index.md
+!knowledge/workspace/MISSING-CONTEXT-LOG.md
+!knowledge/workspace/DETECTED-TOOLS-LOG.md
+!knowledge/workspace/SETUP-PENDING.md
+!knowledge/workspace/MASTER-INDEX.md
+!knowledge/workspace/inbox/
+!knowledge/workspace/inbox/.gitkeep
+
+# Knowledge personal — L3 ONLY (never commit content)
+# The personal/.gitignore blocks everything except itself and index.md
+!knowledge/personal/
+!knowledge/personal/.gitignore
+!knowledge/personal/index.md
 
 # Logs scaffolding L1
 !logs/
@@ -497,12 +518,16 @@ squads/
 # Adicionar aqui quando conteúdo absorvido for compartilhado no L2
 # ══════════════════════════════════════════════════════════════════════
 
-# Knowledge populado (dossiers, playbooks, dna, sources reais)
-!knowledge/dossiers/**
-!knowledge/playbooks/**
-!knowledge/dna/**
-!knowledge/sources/**
-!knowledge/TAG-RESOLVER.json
+# Knowledge external populado (dossiers, playbooks, dna, sources reais)
+!knowledge/external/dossiers/**
+!knowledge/external/playbooks/**
+!knowledge/external/dna/**
+!knowledge/external/sources/**
+!knowledge/external/TAG-RESOLVER.json
+!knowledge/external/inbox/**
+
+# Knowledge workspace populado
+!knowledge/workspace/**
 
 # Expert agents populados
 !agents/minds/**

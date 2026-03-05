@@ -124,31 +124,31 @@
 │   CAMADA 1: FILOSOFIAS (Por quê?)                                          │
 │   ───────────────────────────────────────────────────────────────────────   │
 │   • Crenças fundamentais sobre o domínio do agente                         │
-│   • Path: /knowledge/dna/persons/{PESSOA}/FILOSOFIAS.yaml               │
+│   • Path: /knowledge/external/dna/persons/{PESSOA}/FILOSOFIAS.yaml               │
 │   • Exemplo: "Cash flow é sobrevivência" (CFO)                             │
 │                                                                             │
 │   CAMADA 2: MODELOS MENTAIS (Como penso?)                                  │
 │   ───────────────────────────────────────────────────────────────────────   │
 │   • Frameworks de raciocínio e analogias                                   │
-│   • Path: /knowledge/dna/persons/{PESSOA}/MODELOS-MENTAIS.yaml          │
+│   • Path: /knowledge/external/dna/persons/{PESSOA}/MODELOS-MENTAIS.yaml          │
 │   • Exemplo: "Value Equation" (CRO), "Farm System" (BDR)                   │
 │                                                                             │
 │   CAMADA 3: HEURÍSTICAS (Regras rápidas)                                   │
 │   ───────────────────────────────────────────────────────────────────────   │
 │   • SE/ENTÃO para decisões recorrentes                                     │
-│   • Path: /knowledge/dna/persons/{PESSOA}/HEURISTICAS.yaml              │
+│   • Path: /knowledge/external/dna/persons/{PESSOA}/HEURISTICAS.yaml              │
 │   • Exemplo: "SE LTV/CAC < 3, ENTÃO problema" (CFO)                        │
 │                                                                             │
 │   CAMADA 4: FRAMEWORKS (Estruturas)                                        │
 │   ───────────────────────────────────────────────────────────────────────   │
 │   • Metodologias estruturadas, modelos visuais                             │
-│   • Path: /knowledge/dna/persons/{PESSOA}/FRAMEWORKS.yaml               │
+│   • Path: /knowledge/external/dna/persons/{PESSOA}/FRAMEWORKS.yaml               │
 │   • Exemplo: "5 Armas" (Closer), "Grand Slam Offers" (CRO)                 │
 │                                                                             │
 │   CAMADA 5: METODOLOGIAS (Processos)                                       │
 │   ───────────────────────────────────────────────────────────────────────   │
 │   • Processos completos de execução                                        │
-│   • Path: /knowledge/dna/persons/{PESSOA}/METODOLOGIAS.yaml             │
+│   • Path: /knowledge/external/dna/persons/{PESSOA}/METODOLOGIAS.yaml             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```

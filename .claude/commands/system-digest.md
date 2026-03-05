@@ -39,7 +39,7 @@ Comando de diagnóstico que mostra o **estado completo** do sistema Mega Brain, 
 │                                                                               │
 │  2. ESCANEIA DIRETÓRIOS                                                       │
 │     ├─ /inbox/ → Lista arquivos não processados                            │
-│     ├─ /knowledge/dossiers/ → Lista dossiers existentes                    │
+│     ├─ /knowledge/external/dossiers/ → Lista dossiers existentes                    │
 │     └─ /agents/ → Lista agents e status de MEMORYs                         │
 │                                                                               │
 │  3. DETECTA INCONSISTÊNCIAS                                                   │
@@ -78,8 +78,8 @@ READ /processing/narratives/NARRATIVES-STATE.json
 
 ```
 SCAN /inbox/ recursivamente para arquivos .txt e .md
-SCAN /knowledge/dossiers/persons/ para DOSSIERs
-SCAN /knowledge/dossiers/THEMES/ para DOSSIERs temáticos
+SCAN /knowledge/external/dossiers/persons/ para DOSSIERs
+SCAN /knowledge/external/dossiers/THEMES/ para DOSSIERs temáticos
 SCAN /agents/*/MEMORY-*.md para status de MEMORYs
 ```
 
@@ -89,7 +89,7 @@ Para cada tipo de inconsistência:
 
 #### DOSSIER_SEM_NARRATIVA
 ```python
-for dossier in list_files("/knowledge/dossiers/persons/"):
+for dossier in list_files("/knowledge/external/dossiers/persons/"):
     person_name = extract_person_from_dossier(dossier)
     if person_name not in narratives_state["persons"]:
         report_inconsistency("DOSSIER_SEM_NARRATIVA", dossier, person_name)
@@ -100,7 +100,7 @@ for dossier in list_files("/knowledge/dossiers/persons/"):
 for memory in list_files("/agents/*/MEMORY-*.md"):
     persons_mentioned = extract_persons_from_memory(memory)
     for person in persons_mentioned:
-        if not exists(f"/knowledge/dossiers/persons/DOSSIER-{person}.md"):
+        if not exists(f"/knowledge/external/dossiers/persons/DOSSIER-{person}.md"):
             report_inconsistency("MEMORY_SEM_DOSSIER", memory, person)
 ```
 

@@ -81,8 +81,8 @@ IF $ARGUMENTS already in processed list:
 Required files (verify exist before proceeding):
 - [ ] `/system/GLOSSARY/*.md` (all glossary files)
 - [ ] `/agents/DISCOVERY/role-tracking.md`
-- [ ] `/knowledge/dossiers/persons/` directory structure
-- [ ] `/knowledge/dossiers/THEMES/` directory structure
+- [ ] `/knowledge/external/dossiers/persons/` directory structure
+- [ ] `/knowledge/external/dossiers/THEMES/` directory structure
 - [ ] `/knowledge/SOURCES/` directory structure
 - [ ] `/system/REGISTRY/processed-files.md`
 ```

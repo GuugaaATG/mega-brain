@@ -37,7 +37,7 @@ EXTRACAO DE DNA: {PESSOA}
 
 PASSO 1: VERIFICAR PRE-REQUISITOS
 
-[ ] DOSSIER existe: /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+[ ] DOSSIER existe: /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
 [ ] INSIGHTS-STATE.json tem insights desta pessoa
 [ ] CHUNKS-STATE.json tem chunks desta pessoa
 
@@ -77,35 +77,35 @@ Para cada camada, aplicar regras de classificacao e gerar YAML:
     - Aparecem 3+ vezes em contextos diferentes
     - NAO contem numero/threshold
 
-    → Gerar: /knowledge/dna/persons/{PESSOA}/FILOSOFIAS.yaml
+    → Gerar: /knowledge/external/dna/persons/{PESSOA}/FILOSOFIAS.yaml
 
 3.2 MODELOS MENTAIS
     - Lentes de analise
     - Geram perguntas especificas
     - Mudam como voce VE
 
-    → Gerar: /knowledge/dna/persons/{PESSOA}/MODELOS-MENTAIS.yaml
+    → Gerar: /knowledge/external/dna/persons/{PESSOA}/MODELOS-MENTAIS.yaml
 
 3.3 HEURISTICAS (PRIORIDADE MAXIMA)
     - Regras com THRESHOLD NUMERICO
     - Formato "Se X entao Y"
     - AS MAIS VALIOSAS
 
-    → Gerar: /knowledge/dna/persons/{PESSOA}/HEURISTICAS.yaml
+    → Gerar: /knowledge/external/dna/persons/{PESSOA}/HEURISTICAS.yaml
 
 3.4 FRAMEWORKS
     - Estruturas nomeadas
     - Componentes definidos
     - NAO tem ordem rigida
 
-    → Gerar: /knowledge/dna/persons/{PESSOA}/FRAMEWORKS.yaml
+    → Gerar: /knowledge/external/dna/persons/{PESSOA}/FRAMEWORKS.yaml
 
 3.5 METODOLOGIAS
     - Processos passo-a-passo
     - Ordem RIGIDA
     - Criterios de sucesso por etapa
 
-    → Gerar: /knowledge/dna/persons/{PESSOA}/METODOLOGIAS.yaml
+    → Gerar: /knowledge/external/dna/persons/{PESSOA}/METODOLOGIAS.yaml
 
 PASSO 4: CALCULAR PESOS
 
@@ -124,7 +124,7 @@ BASE: 0.50
 
 PASSO 5: GERAR CONFIG.yaml
 
-→ Gerar: /knowledge/dna/persons/{PESSOA}/CONFIG.yaml
+→ Gerar: /knowledge/external/dna/persons/{PESSOA}/CONFIG.yaml
 
 Conteudo:
 - Padroes comportamentais

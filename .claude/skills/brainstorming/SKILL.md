@@ -43,7 +43,7 @@ Transforma ideias em designs estruturados através de diálogo colaborativo. Usa
 ## Após o Design
 
 **Documentação:**
-- Escrever design validado em `knowledge/playbooks/drafts/YYYY-MM-DD-<topico>-design.md`
+- Escrever design validado em `knowledge/external/playbooks/drafts/YYYY-MM-DD-<topico>-design.md`
 - Atualizar SESSION-STATE.md com novo design
 
 **Implementação (se continuar):**

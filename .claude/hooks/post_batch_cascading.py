@@ -47,7 +47,7 @@ PROJECT_DIR = os.environ.get(
 )
 
 AGENTS_DIR = Path(PROJECT_DIR) / 'agents'
-KNOWLEDGE_DIR = Path(PROJECT_DIR) / 'knowledge'
+KNOWLEDGE_DIR = Path(PROJECT_DIR) / 'knowledge' / 'external'
 DOSSIERS_DIR = KNOWLEDGE_DIR / 'dossiers' / 'themes'
 LOGS_DIR = Path(PROJECT_DIR) / 'logs'
 CASCADING_LOG = LOGS_DIR / 'cascading.jsonl'
@@ -796,7 +796,7 @@ def cascade_to_playbooks(playbooks: List[Dict], batch_id: str,
     Cascateia para playbooks.
 
     Para cada playbook:
-    1. Verifica se existe em /knowledge/playbooks/
+    1. Verifica se existe em /knowledge/external/playbooks/
     2. Se NAO existe -> cria com CONTEUDO REAL dos frameworks do batch
     3. Se EXISTE -> adiciona novos frameworks/metodologias COM CONTEUDO REAL
 

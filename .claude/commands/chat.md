@@ -43,8 +43,8 @@ Liste tambem:
 - `ls /agents/sua-empresa/roles/` → Contar ROLEs (cargos humanos)
 - `ls /agents/sua-empresa/jds/` → Contar Job Descriptions
 - `ls /agents/sua-empresa/memory/` → Contar MEMORYs de cargos
-- `ls /knowledge/dossiers/persons/` → Contar dossies pessoas
-- `ls /knowledge/dossiers/THEMES/` → Contar dossies temas
+- `ls /knowledge/external/dossiers/persons/` → Contar dossies pessoas
+- `ls /knowledge/external/dossiers/THEMES/` → Contar dossies temas
 - `ls /inbox/` (recursivo) → Materiais pendentes
 
 Ler arquivo de mapeamento:

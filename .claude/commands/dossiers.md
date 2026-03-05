@@ -29,8 +29,8 @@ argument-hint: [--persons] [--themes] [--incomplete] [--person "Name"]
 
 ### Step 1: Scan Dossiers
 ```
-SCAN /knowledge/dossiers/persons/ for DOSSIER-*.md
-SCAN /knowledge/dossiers/THEMES/ for DOSSIER-*.md
+SCAN /knowledge/external/dossiers/persons/ for DOSSIER-*.md
+SCAN /knowledge/external/dossiers/THEMES/ for DOSSIER-*.md
 
 FOR each dossier:
   READ header for: last_updated, sources, version
@@ -131,7 +131,7 @@ FOR each dossier:
                          {TIMESTAMP}
 ═══════════════════════════════════════════════════════════════════════════════
 
-📄 ARQUIVO: /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+📄 ARQUIVO: /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
 
 📊 METADADOS:
    Versão: v{N}
@@ -152,7 +152,7 @@ FOR each dossier:
    CLOSER, CRO, SALES-MANAGER
 
 ⭐️ AÇÕES
-   Abrir: code "/knowledge/dossiers/persons/DOSSIER-{PESSOA}.md"
+   Abrir: code "/knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md"
    Reprocessar: /process-jarvis [sources]
 
 ═══════════════════════════════════════════════════════════════════════════════

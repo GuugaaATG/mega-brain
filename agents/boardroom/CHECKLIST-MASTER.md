@@ -100,7 +100,7 @@ boardroom_hook(pipeline_outputs)
 
 ### DNA Cognitivo
 
-- [ ] DNA dos participantes existe em knowledge/dna/
+- [ ] DNA dos participantes existe em knowledge/external/dna/
 - [ ] Princípios relevantes identificados para citação
 - [ ] Heurísticas disponíveis para posicionamento
 

@@ -27,10 +27,10 @@ MIN_CHUNK_SIZE = 100    # Skip chunks smaller than this
 
 # What to index
 INDEX_SOURCES = {
-    "dna": BASE_DIR / "knowledge" / "dna" / "persons",
-    "dossiers_persons": BASE_DIR / "knowledge" / "dossiers" / "persons",
-    "dossiers_themes": BASE_DIR / "knowledge" / "dossiers" / "themes",
-    "playbooks": BASE_DIR / "knowledge" / "playbooks",
+    "dna": BASE_DIR / "knowledge" / "external" / "dna" / "persons",
+    "dossiers_persons": BASE_DIR / "knowledge" / "external" / "dossiers" / "persons",
+    "dossiers_themes": BASE_DIR / "knowledge" / "external" / "dossiers" / "themes",
+    "playbooks": BASE_DIR / "knowledge" / "external" / "playbooks",
 }
 
 

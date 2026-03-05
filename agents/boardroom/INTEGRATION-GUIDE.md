@@ -35,13 +35,13 @@ pipeline_outputs = [
     {
         "type": "playbook",
         "title": "Estrutura de Comissão para Time de Vendas",
-        "path": "knowledge/playbooks/PLAYBOOK-COMISSAO.md",
+        "path": "knowledge/external/playbooks/PLAYBOOK-COMISSAO.md",
         "content": "Conteúdo do playbook..."
     },
     {
         "type": "dossier",
         "title": "Dossiê Cole Gordon",
-        "path": "knowledge/dossiers/persons/DOSSIER-COLE-GORDON.md",
+        "path": "knowledge/external/dossiers/persons/DOSSIER-COLE-GORDON.md",
         "content": "Conteúdo do dossiê..."
     }
 ]
@@ -182,7 +182,7 @@ if not voice_config:
 Os agentes devem consultar seu DNA antes de gerar posições:
 
 ```
-DNA Cognitivo (knowledge/dna/persons/{PESSOA}/)
+DNA Cognitivo (knowledge/external/dna/persons/{PESSOA}/)
 │
 ├── CONFIG.yaml      → Metadados e fontes
 ├── PRINCIPIOS.yaml  → Princípios fundamentais

@@ -73,7 +73,7 @@ dna_sources:
 
   agregado:
     - dominio: "{DOMINIO}"                                    # Ex: "compensation"
-      path: "/knowledge/dna/AGGREGATED/AGG-{DOMINIO}.yaml"
+      path: "/knowledge/external/dna/AGGREGATED/AGG-{DOMINIO}.yaml"
       peso: 0.90                                              # 0.0 a 1.0
       quando_usar: "{Contexto de aplicação}"
       insight_ids:                                            # RASTREABILIDADE
@@ -86,7 +86,7 @@ dna_sources:
 
   primario:
     - pessoa: "{NOME_CANONICO}"                               # Ex: "alex-hormozi"
-      path: "/knowledge/dna/persons/{NOME_CANONICO}"       # Diretório do DNA
+      path: "/knowledge/external/dna/persons/{NOME_CANONICO}"       # Diretório do DNA
       raiz: "/inbox/{PASTA_PESSOA}/"                       # RASTREABILIDADE: inbox
       dominios_usados:
         - "{dominio_1}"                                       # Ex: "scaling"
@@ -110,7 +110,7 @@ dna_sources:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 conflitos:
-  path: "/knowledge/dna/MAPS/MAP-CONFLITOS.yaml"
+  path: "/knowledge/external/dna/MAPS/MAP-CONFLITOS.yaml"
   descricao: "Mapa de tensões entre fontes com resoluções documentadas"
 
 # ═══════════════════════════════════════════════════════════════════════════════

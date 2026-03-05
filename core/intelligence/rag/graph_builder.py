@@ -23,7 +23,7 @@ from typing import Dict, List, Optional, Set, Tuple
 # CONFIG
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
-DNA_DIR = BASE_DIR / "knowledge" / "dna" / "persons"
+DNA_DIR = BASE_DIR / "knowledge" / "external" / "dna" / "persons"
 GRAPH_DIR = BASE_DIR / ".data" / "knowledge_graph"
 GRAPH_FILE = GRAPH_DIR / "graph.json"
 

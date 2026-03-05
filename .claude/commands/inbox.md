@@ -292,5 +292,5 @@ inbox/{PESSOA}/{TIPO}/{arquivo}.txt
               │
               └──→ processing/ (chunks, insights, narratives)
                       │
-                      └──→ knowledge/dossiers/ (output final)
+                      └──→ knowledge/external/dossiers/ (output final)
 ```

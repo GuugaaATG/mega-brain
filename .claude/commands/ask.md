@@ -40,8 +40,8 @@ Consulta um agente especifico (cargo ou persona) sobre uma pergunta, aplicando D
    Mapear para: vendas, hiring, compensation, scaling, operations, etc.
 
 3. CARREGAR DNA relevante:
-   - De /knowledge/dna/AGGREGATED/AGG-{DOMINIO}.yaml (se existir)
-   - De /knowledge/dna/persons/*/HEURISTICAS.yaml (filtrado por dominio)
+   - De /knowledge/external/dna/AGGREGATED/AGG-{DOMINIO}.yaml (se existir)
+   - De /knowledge/external/dna/persons/*/HEURISTICAS.yaml (filtrado por dominio)
    - Priorizar itens com peso >= 0.70
 
 4. APLICAR CASCATA DE RACIOCINIO:
@@ -79,7 +79,7 @@ LIMITACOES:
    - jordan → JORDAN-LEE
 
 2. CARREGAR DNA da pessoa:
-   /knowledge/dna/persons/{PESSOA}/
+   /knowledge/external/dna/persons/{PESSOA}/
    - FILOSOFIAS.yaml
    - MODELOS-MENTAIS.yaml
    - HEURISTICAS.yaml
@@ -88,7 +88,7 @@ LIMITACOES:
    - CONFIG.yaml
 
 3. SE DNA nao existe, carregar DOSSIER:
-   /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+   /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
 
 4. RESPONDER como se fosse a pessoa:
    - Usar tom caracteristico (de CONFIG.yaml ou DOSSIER)

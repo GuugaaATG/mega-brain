@@ -51,7 +51,7 @@ SPOT_CHECKS = [
     # L2 — Premium content
     ('agents/minds/some-agent/AGENT.md', 'L2', 'Mind clone agent'),
     ('agents/cargo/some-role/AGENT.md', 'L2', 'Cargo agent'),
-    ('knowledge/dossiers/some-file.md', 'L2', 'Knowledge dossier'),
+    ('knowledge/external/dossiers/some-file.md', 'L2', 'Knowledge dossier'),
     # L3 — Personal data
     ('inbox/some-file.txt', 'L3', 'Inbox content'),
     ('logs/some-log.md', 'L3', 'Session log'),

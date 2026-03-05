@@ -39,7 +39,7 @@ template: "reference/templates/phase5/MOGA-BRAIN-PHASE5-TEMPLATES.md#5.1"
 | Output | Type | Location | Description |
 |--------|------|----------|-------------|
 | source_log | markdown | logs/SOURCES/SOURCE-{code}.md | Log consolidado da fonte |
-| dna_updated | yaml | knowledge/dna/persons/{source}/ | 5 camadas atualizadas |
+| dna_updated | yaml | knowledge/external/dna/persons/{source}/ | 5 camadas atualizadas |
 | template_5_1 | display | chat | Template visual obrigatório |
 
 ---

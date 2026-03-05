@@ -27,7 +27,7 @@ from typing import Dict, List, Optional, Set, Tuple
 # PATHS
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # mega-brain/
-TAXONOMY_PATH = BASE_DIR / "knowledge" / "dna" / "DOMAINS-TAXONOMY.yaml"
+TAXONOMY_PATH = BASE_DIR / "knowledge" / "external" / "dna" / "DOMAINS-TAXONOMY.yaml"
 AGENTS_DIR = BASE_DIR / "agents"
 CARGO_DIR = AGENTS_DIR / "cargo"
 MINDS_DIR = AGENTS_DIR / "minds"

@@ -154,7 +154,7 @@ Dessas 8, fechar 2-3 vendas.
 
 ```markdown
 Ver também: [Nome do Documento](/caminho/DOCUMENTO.md)
-Fonte: [ID-FONTE](/knowledge/dossiers/...)
+Fonte: [ID-FONTE](/knowledge/external/dossiers/...)
 ```
 
 ---

@@ -65,7 +65,7 @@ Este protocolo unifica o fluxo cognitivo de todos os agentes, integrando:
 │  └── DNA-CONFIG.yaml                  │  └── DNA-CONFIG.yaml                │
 │                                       │                                     │
 │  DNA Source:                          │  DNA Source:                        │
-│  /knowledge/dna/DOMAINS/           │  /knowledge/dna/persons/         │
+│  /knowledge/external/dna/DOMAINS/           │  /knowledge/external/dna/persons/         │
 │  (múltiplas fontes com pesos)         │  (fonte única = 100%)               │
 │                                       │                                     │
 │  Características:                     │  Características:                   │
@@ -137,7 +137,7 @@ Este protocolo unifica o fluxo cognitivo de todos os agentes, integrando:
 │     └─ Padrões de argumentação                                             │
 │                                                                             │
 │  3. CARREGAR DNA-CONFIG.yaml                                                │
-│     └─ Referência para DNA único em knowledge/dna/persons/              │
+│     └─ Referência para DNA único em knowledge/external/dna/persons/              │
 │     └─ Fonte = 100% (sem pesos, sem conflitos)                             │
 │                                                                             │
 │  4. CARREGAR MEMORY.md                                                      │
@@ -406,11 +406,11 @@ RAIZ PRÉ-CARREGADA (pronta para "de onde vem?"):
 │     │                                                                       │
 │     │ Paths definidos em DNA-CONFIG.yaml                                   │
 │     ▼                                                                       │
-│  /knowledge/dna/persons/{PESSOA}/DNA.yaml ──────────────────────────→   │
+│  /knowledge/external/dna/persons/{PESSOA}/DNA.yaml ──────────────────────────→   │
 │     │                                                                       │
 │     │ insight_ids referenciados                                             │
 │     ▼                                                                       │
-│  /knowledge/dna/persons/{PESSOA}/INSIGHTS.yaml ─────────────────────→   │
+│  /knowledge/external/dna/persons/{PESSOA}/INSIGHTS.yaml ─────────────────────→   │
 │                                                                             │
 │  ─────────────────────────────────────────────────────────────────────────  │
 │                                                                             │

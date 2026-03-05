@@ -26,8 +26,8 @@ from typing import Dict, List, Optional, Tuple
 # PATHS
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # mega-brain/
-DOSSIERS_DIR = BASE_DIR / "knowledge" / "dossiers"
-DNA_DIR = BASE_DIR / "knowledge" / "dna" / "persons"
+DOSSIERS_DIR = BASE_DIR / "knowledge" / "external" / "dossiers"
+DNA_DIR = BASE_DIR / "knowledge" / "external" / "dna" / "persons"
 
 # DNA layer files and their ID prefixes
 DNA_LAYERS = {

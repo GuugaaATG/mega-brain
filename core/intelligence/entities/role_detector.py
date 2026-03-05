@@ -36,7 +36,7 @@ from entity_normalizer import (
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).parent.parent
 ROLE_PATTERNS_PATH = BASE_DIR / "scripts" / "_ROLE_PATTERNS.yaml"
-TAXONOMY_PATH = BASE_DIR / "knowledge" / "dna" / "DOMAINS-TAXONOMY.yaml"
+TAXONOMY_PATH = BASE_DIR / "knowledge" / "external" / "dna" / "DOMAINS-TAXONOMY.yaml"
 TRIGGER_CONFIG_PATH = BASE_DIR / "scripts" / "trigger_config.yaml"
 TRIGGERS_LOG_PATH = BASE_DIR / "logs" / "triggers.jsonl"
 

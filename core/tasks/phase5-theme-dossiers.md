@@ -38,7 +38,7 @@ template: "reference/templates/phase5/MOGA-BRAIN-PHASE5-TEMPLATES.md#5.4"
 
 | Output | Type | Location | Description |
 |--------|------|----------|-------------|
-| dossiers_updated | array | knowledge/dossiers/themes/ | Dossiers criados ou atualizados |
+| dossiers_updated | array | knowledge/external/dossiers/themes/ | Dossiers criados ou atualizados |
 | template_5_4 | display | chat | Template visual obrigatório |
 
 ---

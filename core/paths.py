@@ -29,6 +29,9 @@ COMMANDS = CLAUDE / "commands"
 LOGS = ROOT / "logs"
 INBOX = ROOT / "inbox"
 KNOWLEDGE = ROOT / "knowledge"
+KNOWLEDGE_EXTERNAL = KNOWLEDGE / "external"
+KNOWLEDGE_WORKSPACE = KNOWLEDGE / "workspace"
+KNOWLEDGE_PERSONAL = KNOWLEDGE / "personal"
 PROCESSING = ROOT / "processing"
 ARTIFACTS = ROOT / "artifacts"
 DATA = ROOT / ".data"
@@ -39,6 +42,8 @@ MISSION_CONTROL = CLAUDE / "mission-control"
 SESSIONS = CLAUDE / "sessions"
 JARVIS = CLAUDE / "jarvis"
 RAG_INDEX = DATA / "rag_index"
+RAG_EXPERT = DATA / "rag_expert"
+RAG_BUSINESS = DATA / "rag_business"
 KNOWLEDGE_GRAPH = DATA / "knowledge_graph"
 TRASH = CLAUDE / "trash"
 
@@ -64,11 +69,11 @@ ROUTING = {
     "dossier_trigger": LOGS,
     "autonomous_log": LOGS,
     # Knowledge & RAG
-    "rag_chunks": RAG_INDEX,
-    "rag_vectors": RAG_INDEX,
+    "rag_chunks": RAG_EXPERT,
+    "rag_vectors": RAG_EXPERT,
     "graph": KNOWLEDGE_GRAPH,
-    "memory_split": KNOWLEDGE / "dna" / "persons",
-    "nav_map": KNOWLEDGE,
+    "memory_split": KNOWLEDGE_EXTERNAL / "dna" / "persons",
+    "nav_map": KNOWLEDGE_EXTERNAL,
     # Processing pipeline
     "entity_registry": PROCESSING,
     "speakers": PROCESSING,
@@ -81,6 +86,14 @@ ROUTING = {
     "download": INBOX,
     # Trash (never delete, always move here)
     "trash": TRASH,
+    # Knowledge buckets
+    "workspace_data": KNOWLEDGE_WORKSPACE,
+    "personal_data": KNOWLEDGE_PERSONAL,
+    "rag_expert": RAG_EXPERT,
+    "rag_business": RAG_BUSINESS,
+    "workspace_inbox": KNOWLEDGE_WORKSPACE / "inbox",
+    "personal_inbox": KNOWLEDGE_PERSONAL / "inbox",
+    "external_inbox": KNOWLEDGE_EXTERNAL / "inbox",
 }
 
 # ── PROHIBITED DIRECTORIES ───────────────────────────────────────
