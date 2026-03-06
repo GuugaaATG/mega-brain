@@ -137,7 +137,7 @@ SALES:
    └─ Frameworks: {LIST}
 
 📄 DOSSIER DISPONÍVEL:
-   /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+   /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
 
 ═══════════════════════════════════════════════════════════════════════════════
 ```

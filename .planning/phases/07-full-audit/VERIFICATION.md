@@ -17,7 +17,7 @@
 **Evidence:**
 ```bash
 $ ls -la core/intelligence/audit_layers.py
--rw-r--r--  1 thiagofinch  staff  16379 27 Fev 15:35 core/intelligence/audit_layers.py
+-rw-r--r--  1 user  staff  16379 27 Fev 15:35 core/intelligence/audit_layers.py
 ```
 
 ---

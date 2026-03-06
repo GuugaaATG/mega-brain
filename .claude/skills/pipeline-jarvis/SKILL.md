@@ -384,7 +384,7 @@ ARQUIVOS GERADOS
 ├── /processing/chunks/CG004-chunks.json
 ├── /processing/insights/CG004-insights.json
 ├── /knowledge/SOURCES/cole-gordon/SOURCE-CG004.md
-├── /knowledge/dossiers/persons/DOSSIER-COLE-GORDON.md (atualizado)
+├── /knowledge/external/dossiers/persons/DOSSIER-COLE-GORDON.md (atualizado)
 
 AGENTES ATUALIZADOS
 ├── MEMORY-CLOSER.md (+5 entries)

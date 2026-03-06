@@ -297,7 +297,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │           │                   │                                        │  │
 │   │           │                   ▼                                        │  │
 │   │           │   ╔═══════════════════════════════════════════════════╗   │  │
-│   │           │   ║              knowledge/dna/                    ║   │  │
+│   │           │   ║              knowledge/external/dna/                    ║   │  │
 │   │           │   ║        (FONTE AUTORITATIVA DO CONHECIMENTO)       ║   │  │
 │   │           │   ╠═══════════════════════════════════════════════════╣   │  │
 │   │           │   ║                                                   ║   │  │
@@ -321,7 +321,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   2. SOUL.md carrega quando preciso de nuance de personalidade                │
 │   3. DNA-CONFIG carrega quando preciso de metodologia específica              │
 │   4. MEMORY.md carrega quando contexto histórico é relevante                  │
-│   5. knowledge/dna/ é consultado via RAG quando preciso de scripts         │
+│   5. knowledge/external/dna/ é consultado via RAG quando preciso de scripts         │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -412,9 +412,9 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
 │   ┌─────────────────────────────────────────────────────────────────────────┐  │
-│   │  knowledge/dna/ (via RAG)                                            │  │
+│   │  knowledge/external/dna/ (via RAG)                                            │  │
 │   │  ─────────────────────────────────────────────────────────────────────  │  │
-│   │  Path:    /knowledge/dna/persons/{PESSOA}/                           │  │
+│   │  Path:    /knowledge/external/dna/persons/{PESSOA}/                           │  │
 │   │  Status:  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ CONSULTÁVEL          │  │
 │   │  Função:  Fonte autoritativa - scripts completos, exemplos detalhados  │  │
 │   │                                                                         │  │
@@ -489,7 +489,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │                                                                                 │
 │   Este gráfico representa QUEM EU SOU baseado nos TEMAS que domino.            │
 │   Cada barra representa a profundidade de conhecimento em cada domínio.        │
-│   Os dados são extraídos automaticamente dos insights no knowledge/dna/.    │
+│   Os dados são extraídos automaticamente dos insights no knowledge/external/dna/.    │
 │                                                                                 │
 │   ═══════════════════════════════════════════════════════════════════════════  │
 │                                                                                 │
@@ -680,7 +680,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │   ║  COLE GORDON                               PESO: 95% ║│  │
 │   │   ╠═══════════════════════════════════════════════════════════════════╣│  │
 │   │   ║                                                                   ║│  │
-│   │   ║  Path: /knowledge/dna/persons/cole-gordon/                    ║│  │
+│   │   ║  Path: /knowledge/external/dna/persons/cole-gordon/                    ║│  │
 │   │   ║  Tamanho: 42KB (34 metodologias, 28 frameworks, 45 heurísticas)  ║│  │
 │   │   ║                                                                   ║│  │
 │   │   ║  ESPECIALIDADE: Fechamento High-Ticket                           ║│  │
@@ -704,7 +704,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │   ║  ALEX HORMOZI                         PESO: 85% ║│  │
 │   │   ╠═══════════════════════════════════════════════════════════════════╣│  │
 │   │   ║                                                                   ║│  │
-│   │   ║  Path: /knowledge/dna/persons/alex-hormozi/                   ║│  │
+│   │   ║  Path: /knowledge/external/dna/persons/alex-hormozi/                   ║│  │
 │   │   ║  Tamanho: 35KB (18 metodologias, 15 frameworks, 22 heurísticas)  ║│  │
 │   │   ║                                                                   ║│  │
 │   │   ║  ESPECIALIDADE: Ofertas e Escala                                 ║│  │
@@ -800,7 +800,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  "Preciso falar com X" → geralmente belief 3 ou 4                      │  │
 │   │  "Está caro" → belief 5 (preço vs valor)                               │  │
 │   │                                                                         │  │
-│   │  → SCRIPT COMPLETO: /knowledge/dna/persons/cole-gordon/METODOLOGIAS │  │
+│   │  → SCRIPT COMPLETO: /knowledge/external/dna/persons/cole-gordon/METODOLOGIAS │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -835,7 +835,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  │                                                                   │ │  │
 │   │  └───────────────────────────────────────────────────────────────────┘ │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/HEURISTICAS         │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/HEURISTICAS         │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -870,7 +870,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  │                │ "Você está tomando uma ótima decisão porque..."  │ │  │
 │   │  └────────────────┴─────────────────────────────────────────────────┘ │  │
 │   │                                                                         │  │
-│   │  → SCRIPT COMPLETO: /knowledge/dna/persons/cole-gordon/FRAMEWORKS   │  │
+│   │  → SCRIPT COMPLETO: /knowledge/external/dna/persons/cole-gordon/FRAMEWORKS   │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -894,7 +894,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  • Antes de avançar para próxima fase                                  │  │
 │   │  • Para verificar compreensão e engajamento                            │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/HEURISTICAS         │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/HEURISTICAS         │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -925,7 +925,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  • Objeção de preço → mostrar que numerador compensa denominador       │  │
 │   │  • Comparação com alternativas → provar equação mais favorável         │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/alex-hormozi/METODOLOGIAS       │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/alex-hormozi/METODOLOGIAS       │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -951,7 +951,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  • Se prospect é difícil → é oportunidade de servir melhor             │  │
 │   │  • Se não fechou → próximo                                             │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/MODELOS-MENTAIS     │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/MODELOS-MENTAIS     │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -978,7 +978,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  • Ir para próximos passos                                             │  │
 │   │  • Confirmar decisão                                                   │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/HEURISTICAS         │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/HEURISTICAS         │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -999,7 +999,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  3. POR QUE AGORA? (urgência)                                          │  │
 │   │  4. POR QUE NÓS? (diferencial)                                         │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/FRAMEWORKS          │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/FRAMEWORKS          │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -1020,7 +1020,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │  3. Perguntar se está pronto para avançar                              │  │
 │   │  4. Dar o próximo passo concreto                                       │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/METODOLOGIAS        │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/METODOLOGIAS        │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -1045,7 +1045,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │   você diz que precisa pensar, é mais sobre [o investimento],          │  │
 │   │   [se isso vai funcionar pra você], ou [o timing]?"                    │  │
 │   │                                                                         │  │
-│   │  → DETALHES: /knowledge/dna/persons/cole-gordon/HEURISTICAS         │  │
+│   │  → DETALHES: /knowledge/external/dna/persons/cole-gordon/HEURISTICAS         │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                 │
@@ -1224,7 +1224,7 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │                                                                         │  │
 │   │   Também verifico:                                                     │  │
 │   │   • MEMORY.md → Já enfrentei situação similar? O que funcionou?        │  │
-│   │   • Se preciso de script completo → Consulto RAG (knowledge/dna/)   │  │
+│   │   • Se preciso de script completo → Consulto RAG (knowledge/external/dna/)   │  │
 │   │                                                                         │  │
 │   └─────────────────────────────────────────────────────────────────────────┘  │
 │                           │                                                     │
@@ -2184,14 +2184,14 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 │   │                                                                         │  │
 │   │  ┌──────────────────────────────────────────────────────────────────┐  │  │
 │   │  │                                                                  │  │  │
-│   │  │  /knowledge/dna/persons/cole-gordon/                         │  │  │
+│   │  │  /knowledge/external/dna/persons/cole-gordon/                         │  │  │
 │   │  │  ├── FILOSOFIAS.yaml      → Princípios fundamentais             │  │  │
 │   │  │  ├── MODELOS-MENTAIS.yaml → Inner Game, High Performance        │  │  │
 │   │  │  ├── HEURISTICAS.yaml     → Tonalidade, Tie Downs, etc.         │  │  │
 │   │  │  ├── FRAMEWORKS.yaml      → CLOSER, 4 Pillars, etc.             │  │  │
 │   │  │  └── METODOLOGIAS.yaml    → 7 Beliefs, Committing Phase, etc.   │  │  │
 │   │  │                                                                  │  │  │
-│   │  │  /knowledge/dna/persons/alex-hormozi/                        │  │  │
+│   │  │  /knowledge/external/dna/persons/alex-hormozi/                        │  │  │
 │   │  │  ├── METODOLOGIAS.yaml    → Grand Slam Offers, Value Equation   │  │  │
 │   │  │  └── FRAMEWORKS.yaml      → Farm System, Acquisition System     │  │  │
 │   │  │                                                                  │  │  │
@@ -2308,21 +2308,21 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 
 | Camada | Path | Quando Usar |
 |--------|------|-------------|
-| Filosofias | `/knowledge/dna/persons/{PESSOA_1}/FILOSOFIAS.yaml` | {CONTEXTO_FILOSOFIAS} |
-| Modelos Mentais | `/knowledge/dna/persons/{PESSOA_1}/MODELOS-MENTAIS.yaml` | {CONTEXTO_MM} |
-| Heurísticas | `/knowledge/dna/persons/{PESSOA_1}/HEURISTICAS.yaml` | {CONTEXTO_HEU} |
-| Frameworks | `/knowledge/dna/persons/{PESSOA_1}/FRAMEWORKS.yaml` | {CONTEXTO_FRA} |
-| Metodologias | `/knowledge/dna/persons/{PESSOA_1}/METODOLOGIAS.yaml` | {CONTEXTO_MET} |
+| Filosofias | `/knowledge/external/dna/persons/{PESSOA_1}/FILOSOFIAS.yaml` | {CONTEXTO_FILOSOFIAS} |
+| Modelos Mentais | `/knowledge/external/dna/persons/{PESSOA_1}/MODELOS-MENTAIS.yaml` | {CONTEXTO_MM} |
+| Heurísticas | `/knowledge/external/dna/persons/{PESSOA_1}/HEURISTICAS.yaml` | {CONTEXTO_HEU} |
+| Frameworks | `/knowledge/external/dna/persons/{PESSOA_1}/FRAMEWORKS.yaml` | {CONTEXTO_FRA} |
+| Metodologias | `/knowledge/external/dna/persons/{PESSOA_1}/METODOLOGIAS.yaml` | {CONTEXTO_MET} |
 
 #### {PESSOA_2} ({IDs}) - Peso: {PESO}%
 
 | Camada | Path | Quando Usar |
 |--------|------|-------------|
-| Filosofias | `/knowledge/dna/persons/{PESSOA_2}/FILOSOFIAS.yaml` | {CONTEXTO_FILOSOFIAS} |
-| Modelos Mentais | `/knowledge/dna/persons/{PESSOA_2}/MODELOS-MENTAIS.yaml` | {CONTEXTO_MM} |
-| Heurísticas | `/knowledge/dna/persons/{PESSOA_2}/HEURISTICAS.yaml` | {CONTEXTO_HEU} |
-| Frameworks | `/knowledge/dna/persons/{PESSOA_2}/FRAMEWORKS.yaml` | {CONTEXTO_FRA} |
-| Metodologias | `/knowledge/dna/persons/{PESSOA_2}/METODOLOGIAS.yaml` | {CONTEXTO_MET} |
+| Filosofias | `/knowledge/external/dna/persons/{PESSOA_2}/FILOSOFIAS.yaml` | {CONTEXTO_FILOSOFIAS} |
+| Modelos Mentais | `/knowledge/external/dna/persons/{PESSOA_2}/MODELOS-MENTAIS.yaml` | {CONTEXTO_MM} |
+| Heurísticas | `/knowledge/external/dna/persons/{PESSOA_2}/HEURISTICAS.yaml` | {CONTEXTO_HEU} |
+| Frameworks | `/knowledge/external/dna/persons/{PESSOA_2}/FRAMEWORKS.yaml` | {CONTEXTO_FRA} |
+| Metodologias | `/knowledge/external/dna/persons/{PESSOA_2}/METODOLOGIAS.yaml` | {CONTEXTO_MET} |
 
 > ⚠️ **Adicionar mais blocos de PESSOA conforme DNA-CONFIG.yaml do agente**
 
@@ -2335,9 +2335,9 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 
 | Pessoa | Tema | Path | Quando Usar |
 |--------|------|------|-------------|
-| {PESSOA} | {TEMA} | `/knowledge/SOURCES/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
-| {PESSOA} | {TEMA} | `/knowledge/SOURCES/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
-| {PESSOA} | {TEMA} | `/knowledge/SOURCES/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
+| {PESSOA} | {TEMA} | `/knowledge/external/sources/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
+| {PESSOA} | {TEMA} | `/knowledge/external/sources/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
+| {PESSOA} | {TEMA} | `/knowledge/external/sources/{PESSOA}/{CODIGO}-{TEMA}.md` | {CONTEXTO} |
 
 > ⚠️ **Esta tabela cresce conforme novos materiais são processados pelo Pipeline Jarvis**
 
@@ -2345,8 +2345,8 @@ DNA Composition conforme definido em SOUL.md ^[SOUL.md:20-25]:
 
 | Tipo | Path | Conteúdo |
 |------|------|----------|
-| **PESSOA** | `/knowledge/dossiers/persons/DOSSIER-{PESSOA}.md` | {DESCRICAO} |
-| **TEMA** | `/knowledge/dossiers/THEMES/DOSSIER-{TEMA}.md` | {DESCRICAO} |
+| **PESSOA** | `/knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md` | {DESCRICAO} |
+| **TEMA** | `/knowledge/external/dossiers/THEMES/DOSSIER-{TEMA}.md` | {DESCRICAO} |
 
 > ⚠️ **Dossiês são compilados automaticamente pelo Pipeline Jarvis Phase 4.0/4.1**
 

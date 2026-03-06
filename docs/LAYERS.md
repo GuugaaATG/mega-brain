@@ -49,7 +49,7 @@ bin/                           → L1 (Core engine)
 agents/conclave/               → L1 (Core engine)
 docs/                          → L1 (Core engine)
 inbox/.gitkeep                 → L1 (Empty structure marker)
-knowledge/dossiers/persons/.gitkeep → L1 (Empty structure marker)
+knowledge/external/dossiers/persons/.gitkeep → L1 (Empty structure marker)
 agents/minds/.gitkeep          → L1 (Empty structure marker)
 ```
 
@@ -68,21 +68,21 @@ agents/minds/.gitkeep          → L1 (Empty structure marker)
 **What belongs in L2:**
 - Populated mind clone agents (`agents/minds/` with actual content)
 - Populated cargo agents (`agents/cargo/` with actual profiles)
-- Knowledge dossiers (`knowledge/dossiers/`)
-- Knowledge playbooks (`knowledge/playbooks/`)
-- DNA knowledge base (`knowledge/dna/`)
-- Knowledge sources (`knowledge/sources/`)
+- Knowledge dossiers (`knowledge/external/dossiers/`)
+- Knowledge playbooks (`knowledge/external/playbooks/`)
+- DNA knowledge base (`knowledge/external/dna/`)
+- Knowledge sources (`knowledge/external/sources/`)
 - Pipeline artifacts with extracted knowledge (`artifacts/insights/`, `artifacts/chunks/`, `artifacts/extractions/`)
 
 **Real examples from Phase 7 audit:**
 ```
 agents/minds/                        → L2 (Premium content — when populated)
 agents/cargo/                        → L2 (Premium content — when populated)
-knowledge/dossiers/persons/          → L2 (Premium content)
-knowledge/dossiers/themes/           → L2 (Premium content)
-knowledge/playbooks/                 → L2 (Premium content)
-knowledge/dna/                       → L2 (Premium content)
-knowledge/sources/                   → L2 (Premium content)
+knowledge/external/dossiers/persons/          → L2 (Premium content)
+knowledge/external/dossiers/themes/           → L2 (Premium content)
+knowledge/external/playbooks/                 → L2 (Premium content)
+knowledge/external/dna/                       → L2 (Premium content)
+knowledge/external/sources/                   → L2 (Premium content)
 artifacts/insights/                  → L2 (Premium content)
 artifacts/chunks/                    → L2 (Premium content)
 ```
@@ -276,7 +276,7 @@ Follow these steps in order — stop at the first match:
 - If YES → classify as **L3** (unless it's a `.gitkeep`, which is L1)
 
 **Step 4: Check L2 patterns**
-- Does the path start with: `agents/minds/`, `agents/cargo/`, `knowledge/dossiers/`, `knowledge/playbooks/`, `knowledge/dna/`, `knowledge/sources/`, `artifacts/insights/`, `artifacts/chunks/`, `artifacts/extractions/`?
+- Does the path start with: `agents/minds/`, `agents/cargo/`, `knowledge/external/dossiers/`, `knowledge/external/playbooks/`, `knowledge/external/dna/`, `knowledge/external/sources/`, `artifacts/insights/`, `artifacts/chunks/`, `artifacts/extractions/`?
 - If YES → classify as **L2** (unless it's a `.gitkeep` or empty directory, which is L1)
 
 **Step 5: Check L1 patterns**
@@ -307,11 +307,11 @@ These are real paths from the Phase 7 audit with confirmed classifications:
 | `docs/` | L1 | Core engine |
 | `docs/LAYERS.md` | L1 | Core engine documentation |
 | `inbox/.gitkeep` | L1 | Empty structure marker |
-| `knowledge/dossiers/persons/.gitkeep` | L1 | Empty structure marker |
+| `knowledge/external/dossiers/persons/.gitkeep` | L1 | Empty structure marker |
 | `agents/minds/.gitkeep` | L1 | Empty structure marker |
-| `knowledge/dossiers/persons/ALEX-HORMOZI.md` | L2 | Populated content |
-| `knowledge/playbooks/SALES-PLAYBOOK.md` | L2 | Populated content |
-| `knowledge/dna/` | L2 | Populated content |
+| `knowledge/external/dossiers/persons/ALEX-HORMOZI.md` | L2 | Populated content |
+| `knowledge/external/playbooks/SALES-PLAYBOOK.md` | L2 | Populated content |
+| `knowledge/external/dna/` | L2 | Populated content |
 | `agents/minds/ALEX-HORMOZI/` | L2 | Premium content |
 | `artifacts/insights/` | L2 | Premium content |
 | `inbox/` | L3 | Personal data |
@@ -398,6 +398,6 @@ This checklist confirms that LAYERS.md meets its stated purpose: "any person can
 
 **Test cases (a new reader should classify these correctly after reading this document):**
 - `core/tasks/new-task.md` → L1 (Step 5: starts with `core/`)
-- `knowledge/playbooks/SALES-PLAYBOOK.md` → L2 (Step 4: starts with `knowledge/playbooks/`)
+- `knowledge/external/playbooks/SALES-PLAYBOOK.md` → L2 (Step 4: starts with `knowledge/external/playbooks/`)
 - `inbox/my-video.txt` → L3 (Step 3: starts with `inbox/`)
 - `.env.local` → NEVER (Step 1: matches `.env*` pattern)

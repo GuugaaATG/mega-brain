@@ -32,7 +32,10 @@ mega-brain/
 ├── bin/            -> CLI tools (npm)
 ├── inbox/          -> Raw materials (L3)
 ├── artifacts/      -> Pipeline stages (L3)
-├── knowledge/      -> Knowledge base (L3)
+├── knowledge/      -> Knowledge base
+│   ├── external/       -> Expert content (dna, dossiers, playbooks, sources)
+│   ├── workspace/      -> Generated artifacts (reports, analyses)
+│   └── personal/       -> User-specific content (notes, custom)
 └── logs/           -> Session logs (L3)
 ```
 
@@ -46,8 +49,8 @@ When in plan mode, save the plan file to: `docs/plans/YYYY-MM-DD-description.md`
 | Layer | Content | Git Status |
 |-------|---------|------------|
 | L1 (Community) | core/, agents/conclave, .claude/, bin/, docs/ | Tracked (npm package) |
-| L2 (Pro) | agents/cargo, agents/sub-agents | Tracked (premium) |
-| L3 (Personal) | .data/, .env, agents/persons | Gitignored |
+| L2 (Pro) | agents/cargo, knowledge/external/ (populated) | Tracked (premium) |
+| L3 (Personal) | .data/, .env, agents/persons, knowledge/personal/ | Gitignored |
 
 ## Community vs Pro
 

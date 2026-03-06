@@ -22,7 +22,7 @@ Carrega plano, revisa criticamente, executa tarefas em batches, reporta para rev
 ## O Processo
 
 ### Step 1: Carregar e Revisar Plano
-1. Ler arquivo do plano (geralmente em `knowledge/playbooks/drafts/`)
+1. Ler arquivo do plano (geralmente em `knowledge/external/playbooks/drafts/`)
 2. Revisar criticamente - identificar questões ou preocupações
 3. Se houver preocupações: Levantar antes de começar
 4. Se ok: Criar TodoWrite e prosseguir

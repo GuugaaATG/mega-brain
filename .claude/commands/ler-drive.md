@@ -46,7 +46,7 @@ Explora, lê e **cria** recursos do Google Drive conectado via MCP.
 **Exemplos:**
 - `/ler-drive criar:Relatório Mensal --arquivo logs/relatorio.md`
 - `/ler-drive criar:Notas Rápidas --conteudo "Texto do documento"`
-- `/ler-drive criar:Backup DOSSIER --arquivo knowledge/dossiers/persons/DOSSIER-COLE-GORDON.md`
+- `/ler-drive criar:Backup DOSSIER --arquivo knowledge/external/dossiers/persons/DOSSIER-COLE-GORDON.md`
 
 ## COMPORTAMENTO
 
@@ -197,7 +197,7 @@ python scripts/gdocs_full_auth.py "Título do Documento" "caminho/arquivo.md" [f
 
 # Exemplos
 python scripts/gdocs_full_auth.py "Meu Relatório" "arquivo.md"
-python scripts/gdocs_full_auth.py "Backup DOSSIER" "knowledge/dossiers/persons/DOSSIER-COLE-GORDON.md"
+python scripts/gdocs_full_auth.py "Backup DOSSIER" "knowledge/external/dossiers/persons/DOSSIER-COLE-GORDON.md"
 ```
 
 ---

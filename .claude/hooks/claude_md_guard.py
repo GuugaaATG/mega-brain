@@ -11,21 +11,21 @@ Architecture Rule Enforced:
   - .claude/CLAUDE.md (project instructions)
   - CLAUDE.md (repo root)
 
-  Agent memory MUST use .claude/agent-memory/{slug}/MEMORY.md
+  Agent memory lives at agents/{path}/MEMORY.md (resolved via AGENT-INDEX.yaml)
   NEVER create CLAUDE.md in code directories, data dirs, or subfolders.
 
 VETO CONDITIONS:
   - Any Write/Edit targeting a CLAUDE.md outside sanctioned paths -> BLOCK
   - Any content containing <claude-mem-context> outside .claude/ -> BLOCK
 
-ERROR HANDLING: fail-CLOSED (2026-02-22 hardening)
-  - JSONDecodeError -> BLOCK (can't parse = can't validate)
-  - Any Exception -> BLOCK (unknown error = can't validate)
+ERROR HANDLING: fail-OPEN (2026-03-05 safety fix)
+  - JSONDecodeError -> ALLOW (can't parse = not a valid hook call)
+  - Any Exception -> ALLOW (don't block user operations on internal errors)
 """
 
 import json
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Sanctioned CLAUDE.md locations (relative to project root)
@@ -116,7 +116,7 @@ def main():
                     "decision": "allow",
                     "message": (
                         "Warning: CLAUDE.md Guard: Detected claude-mem-context in sanctioned file. "
-                        "Agent memory should use .claude/agent-memory/{slug}/MEMORY.md instead."
+                        "Agent memory lives at agents/{path}/MEMORY.md (resolved via AGENT-INDEX.yaml)."
                     )
                 }))
                 return
@@ -132,22 +132,16 @@ def main():
                 f"   Path: {relative_path}\n"
                 f"   Rule: CLAUDE.md files are NOT allowed outside sanctioned locations.\n"
                 f"   Sanctioned: {', '.join(sorted(SANCTIONED_CLAUDE_MD))}\n"
-                f"   Agent memory -> .claude/agent-memory/{{slug}}/MEMORY.md"
+                f"   Agent memory -> agents/{{path}}/MEMORY.md (via AGENT-INDEX.yaml)"
             )
         }))
 
     except json.JSONDecodeError:
-        # Fail-CLOSED: can't parse input = can't validate = BLOCK
-        print(json.dumps({
-            "decision": "block",
-            "reason": "CLAUDE.md Guard: Cannot parse hook input (malformed JSON). Blocking by default."
-        }))
-    except Exception as e:
-        # Fail-CLOSED: unknown error = can't validate = BLOCK
-        print(json.dumps({
-            "decision": "block",
-            "reason": f"CLAUDE.md Guard error (fail-closed): {str(e)}. Blocking by default."
-        }))
+        # Fail-OPEN: can't parse input = not a valid hook call = allow
+        print(json.dumps({"decision": "allow"}))
+    except Exception:
+        # Fail-OPEN: unknown error = don't block user operations
+        print(json.dumps({"decision": "allow"}))
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ Escreve planos de implementação compreensivos assumindo que o executor tem zer
 
 **Anunciar no início:** "Estou usando a skill writing-plans para criar o plano de implementação."
 
-**Salvar planos em:** `knowledge/playbooks/drafts/YYYY-MM-DD-<nome-feature>.md`
+**Salvar planos em:** `knowledge/external/playbooks/drafts/YYYY-MM-DD-<nome-feature>.md`
 
 ## Granularidade de Tasks
 
@@ -169,7 +169,7 @@ Escreve planos de implementação compreensivos assumindo que o executor tem zer
 
 Após salvar o plano, oferecer escolha:
 
-**"Plano completo e salvo em `knowledge/playbooks/drafts/<filename>.md`. Duas opções:**
+**"Plano completo e salvo em `knowledge/external/playbooks/drafts/<filename>.md`. Duas opções:**
 
 **1. Execução Subagente (esta sessão)** - Dispatch agente por task, review entre tasks
 

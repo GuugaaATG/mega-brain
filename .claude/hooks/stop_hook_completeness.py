@@ -17,11 +17,11 @@ Output:
 - Se incompleto: print mensagem sugerindo continuar
 """
 
-import sys
-import os
 import json
-from pathlib import Path
+import os
+import sys
 from datetime import datetime
+from pathlib import Path
 
 # Fix Windows cp1252 encoding
 if sys.platform == 'win32':
@@ -32,7 +32,7 @@ PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 MISSION_CONTROL = PROJECT_ROOT / '.claude' / 'mission-control'
 LEDGER_PATH = PROJECT_ROOT / '.claude' / 'LEDGER.md'
 INBOX_PATH = PROJECT_ROOT / 'inbox'
-LOGS_PATH = PROJECT_ROOT / 'logs' / 'stop_hooks'
+LOGS_PATH = PROJECT_ROOT / '.claude' / 'logs' / 'stop_hooks'
 LOGS_PATH.mkdir(parents=True, exist_ok=True)
 
 def count_inbox_files() -> int:
@@ -62,7 +62,7 @@ def check_pending_batches() -> tuple[int, int]:
         return 0, 0
 
     try:
-        with open(state_file, 'r') as f:
+        with open(state_file) as f:
             state = json.load(f)
 
         current = state.get('current_state', {})

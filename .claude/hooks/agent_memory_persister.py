@@ -6,13 +6,15 @@ Persists session learnings to the active agent's memory file at session end.
 Adapted from: aios-core/.claude/hooks/agent_memory_persister.py
 
 LIFECYCLE:
-  READ:  skill_router.py (UserPromptSubmit) -> loads .claude/agent-memory/{slug}/MEMORY.md
-  WRITE: post_batch_cascading.py (PostToolUse) -> writes batch learnings
-  WRITE: THIS HOOK (SessionEnd) -> writes session summary
+  READ:  memory_hints_injector.py (UserPromptSubmit) -> loads canonical MEMORY.md via AGENT-INDEX.yaml
+  WRITE: post_batch_cascading.py (PostToolUse) -> writes batch learnings to agent dir
+  WRITE: THIS HOOK (SessionEnd) -> writes session summary to canonical location
 
 BEHAVIOR:
 - Reads active agent from STATE.json (session.agent_active)
-- Appends a session entry to .claude/agent-memory/{slug}/MEMORY.md
+- Resolves canonical MEMORY.md path via AGENT-INDEX.yaml (resolve_agent_path.py)
+- Appends a session entry to the resolved path
+- Fallback to .claude/agent-memory/{slug}/MEMORY.md for unindexed agents
 - Creates the memory file if it doesn't exist
 - Fail-open: NEVER blocks session end
 
@@ -23,8 +25,8 @@ Hook Type: SessionEnd
 """
 
 import json
-import sys
 import os
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
@@ -32,7 +34,15 @@ from pathlib import Path
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 STATE_DIR = PROJECT_ROOT / ".claude" / "jarvis"
 STATE_FILE = STATE_DIR / "STATE.json"
-AGENT_MEMORY_DIR = PROJECT_ROOT / ".claude" / "agent-memory"
+
+# Import canonical path resolver (MOD-001: writes to agent directories, not .claude/agent-memory/)
+try:
+    sys.path.insert(0, str(PROJECT_ROOT / ".claude" / "hooks"))
+    from resolve_agent_path import resolve_memory_path
+    _HAS_RESOLVER = True
+except ImportError:
+    _HAS_RESOLVER = False
+    AGENT_MEMORY_DIR = PROJECT_ROOT / ".claude" / "agent-memory"
 
 # Internal time budget (ms)
 INTERNAL_TIMEOUT_MS = 3000
@@ -43,9 +53,9 @@ def load_state() -> dict:
     if not STATE_FILE.exists():
         return {}
     try:
-        with open(STATE_FILE, 'r', encoding='utf-8') as f:
+        with open(STATE_FILE, encoding='utf-8') as f:
             return json.load(f)
-    except (json.JSONDecodeError, IOError):
+    except (OSError, json.JSONDecodeError):
         return {}
 
 
@@ -74,7 +84,9 @@ def get_session_metadata(state: dict) -> dict:
 
 
 def get_memory_path(agent_slug: str) -> Path:
-    """Resolve agent memory path."""
+    """Resolve agent memory path via AGENT-INDEX.yaml with fallback."""
+    if _HAS_RESOLVER:
+        return resolve_memory_path(PROJECT_ROOT, agent_slug)
     return AGENT_MEMORY_DIR / agent_slug / "MEMORY.md"
 
 
@@ -126,7 +138,7 @@ def append_to_memory(memory_path: Path, entry: str) -> bool:
         if len(final_lines) > 200:
             header = final_lines[:20]
             recent = final_lines[-175:]
-            final_lines = header + ["", "<!-- Older entries trimmed by agent_memory_persister.py -->", ""] + recent
+            final_lines = [*header, "", "<!-- Older entries trimmed by agent_memory_persister.py -->", "", *recent]
 
         memory_path.write_text('\n'.join(final_lines), encoding='utf-8')
         return True
@@ -146,7 +158,7 @@ def main():
 
     try:
         input_data = sys.stdin.read()
-        hook_input = json.loads(input_data) if input_data.strip() else {}
+        json.loads(input_data) if input_data.strip() else {}
 
         state = load_state()
         if not state:
@@ -195,7 +207,7 @@ def main():
     except Exception as e:
         print(json.dumps({
             "continue": True,
-            "feedback": f"[MB] Memory persister error (fail-open): {str(e)}"
+            "feedback": f"[MB] Memory persister error (fail-open): {e!s}"
         }))
 
 

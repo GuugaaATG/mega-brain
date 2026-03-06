@@ -335,7 +335,7 @@ THEMES_TO_COMPILE = keys of narratives_state.themes
 ### 6.2 - Compile Person Dossiers
 ```
 FOR each PERSON_NAME in PERSONS_TO_COMPILE:
-  DOSSIER_PATH = /knowledge/dossiers/persons/DOSSIER-{NAME}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/persons/DOSSIER-{NAME}.md
 
   ⛔ ENFORCEMENT: enforce_before_knowledge_write(DOSSIER_PATH)
 
@@ -348,7 +348,7 @@ FOR each PERSON_NAME in PERSONS_TO_COMPILE:
 ### 6.3 - Compile Theme Dossiers
 ```
 FOR each THEME_NAME in THEMES_TO_COMPILE:
-  DOSSIER_PATH = /knowledge/dossiers/THEMES/DOSSIER-{THEME}.md
+  DOSSIER_PATH = /knowledge/external/dossiers/THEMES/DOSSIER-{THEME}.md
 
   ⛔ ENFORCEMENT: enforce_before_knowledge_write(DOSSIER_PATH)
 
@@ -359,7 +359,7 @@ FOR each THEME_NAME in THEMES_TO_COMPILE:
 
 ### ✓ CHECKPOINT POST-6
 ```
-[ ] CP-POST-6.A: Pelo menos 1 dossiê criado em /knowledge/dossiers/
+[ ] CP-POST-6.A: Pelo menos 1 dossiê criado em /knowledge/external/dossiers/
 [ ] CP-POST-6.B: Dossiê segue template (tem seções obrigatórias)
 [ ] CP-POST-6.C: sources[] contém $SOURCE_ID
 
@@ -472,8 +472,9 @@ LOG: Registrar em EVOLUTION-LOG.md se trigger ativado
 
 ### 8.1 - Automatic Actions
 ```
-8.1.1 RAG INDEX
-  EXECUTE: python scripts/rag_index.py --knowledge --force
+8.1.1 RAG INDEX REBUILD
+  EXECUTE: python3 -m core.intelligence.rag.hybrid_index --bm25-only
+  EXECUTE: python3 -m core.intelligence.rag.graph_builder --build
 
 8.1.2 FILE REGISTRY
   EXECUTE: python scripts/file_registry.py --scan
@@ -500,7 +501,7 @@ VERIFICAÇÃO FINAL - 9 ITENS OBRIGATÓRIOS:
 [ ] 7.B: CANONICAL-MAP.json atualizado com entidades
 [ ] 7.C: INSIGHTS-STATE.json contém insights do $SOURCE_ID
 [ ] 7.D: NARRATIVES-STATE.json contém narrativa para $SOURCE_PERSON
-[ ] 7.E: Pelo menos 1 dossiê em /knowledge/dossiers/
+[ ] 7.E: Pelo menos 1 dossiê em /knowledge/external/dossiers/
 [ ] 7.F: RAG index inclui novos arquivos
 [ ] 7.G: file-registry.json tem entrada para $ARGUMENTS
 [ ] 7.H: SESSION-STATE.md atualizado com $SOURCE_ID

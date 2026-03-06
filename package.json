@@ -32,7 +32,6 @@
     ".claude/agent-memory/synthesizer/",
     ".claude/agent-memory/the-scalable-company/",
     ".claude/agents.yaml",
-    ".claude/agents/",
     ".claude/aios/",
     ".claude/commands/",
     ".claude/get-shit-done/",
@@ -136,12 +135,12 @@
     "knowledge/NAVIGATION-MAP.json",
     "knowledge/README.md",
     "knowledge/TAG-RESOLVER.json",
-    "knowledge/dna/.gitkeep",
-    "knowledge/dossiers/persons/.gitkeep",
-    "knowledge/dossiers/system/.gitkeep",
-    "knowledge/dossiers/themes/.gitkeep",
-    "knowledge/playbooks/.gitkeep",
-    "knowledge/sources/.gitkeep",
+    "knowledge/external/dna/.gitkeep",
+    "knowledge/external/dossiers/persons/.gitkeep",
+    "knowledge/external/dossiers/system/.gitkeep",
+    "knowledge/external/dossiers/themes/.gitkeep",
+    "knowledge/external/playbooks/.gitkeep",
+    "knowledge/external/sources/.gitkeep",
     "logs/.gitkeep",
     "logs/README.md",
     "logs/batches/.gitkeep",
@@ -154,6 +153,13 @@
     "install-wizard": "node bin/mega-brain.js install",
     "validate": "node bin/mega-brain.js validate",
     "validate:layers": "node bin/validate-package.js",
+    "validate:json": "python3 core/intelligence/validation/validate_json_integrity.py",
+    "lint": "ruff check core/ .claude/hooks/",
+    "lint:fix": "ruff check core/ .claude/hooks/ --fix",
+    "format": "ruff format core/ .claude/hooks/",
+    "test": "python3 -m pytest tests/python/ -v",
+    "test:coverage": "python3 -m pytest tests/python/ -v --cov=core/intelligence --cov-report=term-missing",
+    "postinstall": "node bin/install-hooks.js",
     "prepublishOnly": "node bin/pre-publish-gate.js"
   },
   "keywords": [
@@ -171,10 +177,14 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "inquirer": "^9.2.0",
-    "ora": "^7.0.0",
     "boxen": "^7.1.0",
-    "gradient-string": "^2.0.2"
+    "chalk": "^5.3.0",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.2.0",
+    "ora": "^7.0.0"
+  },
+  "devDependencies": {
+    "execa": "^9.6.1",
+    "js-yaml": "^4.1.1"
   }
 }

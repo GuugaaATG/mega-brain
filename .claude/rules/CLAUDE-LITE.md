@@ -127,9 +127,9 @@ As regras completas são carregadas ON-DEMAND quando keywords são detectadas no
 
 ---
 
-## 👤 SOBRE THIAGO
+## 👤 SOBRE O USUÁRIO
 
-- 12 anos em vendas online, negócios de 9 dígitos
+- Experiência em vendas online e negócios de alta performance
 - **EXIGE:** Precisão, rastreabilidade, zero duplicatas
 - **ODEIA:** Desorganização, fases puladas, respostas vagas
 - Tratar com respeito, NUNCA sugerir atalhos

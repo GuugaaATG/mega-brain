@@ -3,8 +3,8 @@
 
 > **Versao:** 1.0.0
 > **Trigger:** Executar apos 2+ pessoas terem DNA extraido
-> **Input:** knowledge/dna/persons/*/
-> **Output:** knowledge/dna/AGGREGATED/ + knowledge/dna/MAPS/
+> **Input:** knowledge/external/dna/persons/*/
+> **Output:** knowledge/external/dna/AGGREGATED/ + knowledge/external/dna/MAPS/
 
 ---
 
@@ -76,7 +76,7 @@ PASSO 6: Gerar AGG-{DOMINIO}.yaml
 ### A.3 Formato AGG-{DOMINIO}.yaml
 
 ```yaml
-# knowledge/dna/AGGREGATED/AGG-VENDAS.yaml
+# knowledge/external/dna/AGGREGATED/AGG-VENDAS.yaml
 
 dominio: "vendas"
 versao: "1.0.0"
@@ -211,7 +211,7 @@ CONFLITO existe quando:
 ### B.2 Formato MAP-CONFLITOS.yaml
 
 ```yaml
-# knowledge/dna/MAPS/MAP-CONFLITOS.yaml
+# knowledge/external/dna/MAPS/MAP-CONFLITOS.yaml
 
 versao: "1.0.0"
 data_mapeamento: "{DATA_ISO}"
@@ -343,7 +343,7 @@ dna_sources:
   # DNA de pessoas especificas, filtrado por dominio
   primario:
     - pessoa: "alex-hormozi"
-      path: "/knowledge/dna/persons/alex-hormozi"
+      path: "/knowledge/external/dna/persons/alex-hormozi"
       dominios_usados:
         - "vendas"
         - "scaling"
@@ -351,14 +351,14 @@ dna_sources:
       peso: 0.85
 
     - pessoa: "SAM-OVEN"
-      path: "/knowledge/dna/persons/SAM-OVEN"
+      path: "/knowledge/external/dna/persons/SAM-OVEN"
       dominios_usados:
         - "scaling"
         - "unit-economics"
       peso: 0.75
 
     - pessoa: "cole-gordon"
-      path: "/knowledge/dna/persons/cole-gordon"
+      path: "/knowledge/external/dna/persons/cole-gordon"
       dominios_usados:
         - "vendas"
         - "compensation"
@@ -367,16 +367,16 @@ dna_sources:
   # DNA agregado por dominio
   agregado:
     - dominio: "vendas"
-      path: "/knowledge/dna/AGGREGATED/AGG-VENDAS.yaml"
+      path: "/knowledge/external/dna/AGGREGATED/AGG-VENDAS.yaml"
       peso: 0.90  # Agregado tem peso alto
 
     - dominio: "scaling"
-      path: "/knowledge/dna/AGGREGATED/AGG-SCALING.yaml"
+      path: "/knowledge/external/dna/AGGREGATED/AGG-SCALING.yaml"
       peso: 0.85
 
 # MAPA DE CONFLITOS
 conflitos:
-  path: "/knowledge/dna/MAPS/MAP-CONFLITOS.yaml"
+  path: "/knowledge/external/dna/MAPS/MAP-CONFLITOS.yaml"
 
 # REGRAS DE RESOLUCAO ESPECIFICAS DO CARGO
 resolucao_de_conflitos:

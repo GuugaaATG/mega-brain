@@ -927,7 +927,7 @@ Cada log responde 4 perguntas fundamentais:
       │      ├─► insights/ (+{N} insights)
       │      └─► narratives/ (+{N} narratives)
       │
-      ├─► knowledge/dossiers/
+      ├─► knowledge/external/dossiers/
       │      ├─► PERSONS/{PERSON}.md
       │      └─► THEMES/{THEME}.md
       │

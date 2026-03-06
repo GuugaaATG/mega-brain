@@ -25,18 +25,17 @@ TRIGGERS:
 - Stop: Salva resposta do Claude + snapshot MD
 
 Author: JARVIS
-Version: 1.0.0
-Date: 2026-02-26
+Version: 1.1.0
+Date: 2026-03-01
 """
 
+import hashlib
 import json
-import sys
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any, Optional
-import hashlib
-
+from typing import Any
 
 #================================
 # CONFIGURATION
@@ -67,7 +66,7 @@ def ensure_dirs():
     Config.SESSIONS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def append_to_jsonl(entry: Dict[str, Any]) -> bool:
+def append_to_jsonl(entry: dict[str, Any]) -> bool:
     """
     Append entry to JSONL file.
 
@@ -86,7 +85,7 @@ def append_to_jsonl(entry: Dict[str, Any]) -> bool:
             f.write(json.dumps(entry, ensure_ascii=False) + '\n')
 
         return True
-    except Exception as e:
+    except Exception:
         # Fallback: tentar escrever em arquivo de emergência
         try:
             emergency = Config.SESSIONS_DIR / "emergency.jsonl"
@@ -104,7 +103,7 @@ def read_jsonl() -> list:
 
     entries = []
     try:
-        with open(Config.CURRENT_JSONL, 'r', encoding='utf-8') as f:
+        with open(Config.CURRENT_JSONL, encoding='utf-8') as f:
             for line in f:
                 line = line.strip()
                 if line:
@@ -125,7 +124,7 @@ def count_jsonl_entries() -> int:
 
     count = 0
     try:
-        with open(Config.CURRENT_JSONL, 'r', encoding='utf-8') as f:
+        with open(Config.CURRENT_JSONL, encoding='utf-8') as f:
             for _ in f:
                 count += 1
     except:
@@ -285,12 +284,13 @@ def save_markdown_snapshot():
 # EVENT HANDLERS
 #================================
 
-def on_user_message(content: str, metadata: Dict = None):
+def on_user_message(content: str, metadata: dict = None, session_id: str = None):
     """Handler para mensagem do usuário (UserPromptSubmit)."""
     entry = {
         'type': 'user_message',
         'content': content[:2000],  # Limitar tamanho
-        'metadata': metadata or {}
+        'metadata': metadata or {},
+        'session_uuid': session_id
     }
 
     append_to_jsonl(entry)
@@ -302,13 +302,14 @@ def on_user_message(content: str, metadata: Dict = None):
         rotate_jsonl()
 
 
-def on_tool_use(tool_name: str, tool_input: Dict = None, result_preview: str = None):
+def on_tool_use(tool_name: str, tool_input: dict = None, result_preview: str = None, session_id: str = None):
     """Handler para uso de ferramenta (PostToolUse)."""
     entry = {
         'type': 'tool_use',
         'tool': tool_name,
-        'input_preview': str(tool_input)[:500] if tool_input else None,
-        'result_preview': result_preview[:500] if result_preview else None
+        'input_preview': str(tool_input)[:2000] if tool_input else None,
+        'result_preview': result_preview[:500] if result_preview else None,
+        'session_uuid': session_id
     }
 
     # Extrair arquivo se for Edit/Write/Read
@@ -321,11 +322,12 @@ def on_tool_use(tool_name: str, tool_input: Dict = None, result_preview: str = N
     append_to_jsonl(entry)
 
 
-def on_response_complete(preview: str = None):
+def on_response_complete(preview: str = None, session_id: str = None):
     """Handler para resposta completa (Stop)."""
     entry = {
         'type': 'response',
-        'preview': preview[:500] if preview else '[response complete]'
+        'preview': preview[:500] if preview else '[response complete]',
+        'session_uuid': session_id
     }
 
     append_to_jsonl(entry)
@@ -334,7 +336,7 @@ def on_response_complete(preview: str = None):
     save_markdown_snapshot()
 
 
-def get_session_summary() -> Dict:
+def get_session_summary() -> dict:
     """Retorna resumo da sessão atual."""
     entries = read_jsonl()
 
@@ -372,32 +374,31 @@ def main():
     except:
         hook_input = {}
 
+    # Extrair session_id para cross-reference com --resume
+    session_id = hook_input.get('session_id')
+
     # Determinar tipo de evento
-    event_type = None
 
     # Detectar pelo contexto do hook
     if 'prompt' in hook_input or 'user_prompt' in hook_input:
-        event_type = 'user_message'
         content = hook_input.get('prompt') or hook_input.get('user_prompt', '')
-        on_user_message(content, hook_input)
+        on_user_message(content, hook_input, session_id)
 
     elif 'tool_name' in hook_input:
-        event_type = 'tool_use'
         on_tool_use(
             hook_input.get('tool_name', 'unknown'),
             hook_input.get('tool_input'),
-            hook_input.get('tool_result', '')[:500] if hook_input.get('tool_result') else None
+            hook_input.get('tool_result', '')[:500] if hook_input.get('tool_result') else None,
+            session_id
         )
 
     elif 'stop_reason' in hook_input or 'response' in hook_input:
-        event_type = 'response'
         preview = hook_input.get('response', '')[:500] if hook_input.get('response') else None
-        on_response_complete(preview)
+        on_response_complete(preview, session_id)
 
     else:
         # Fallback: tratar como resposta completa (Stop hook)
-        event_type = 'response'
-        on_response_complete()
+        on_response_complete(session_id=session_id)
 
     # Output para o hook system
     summary = get_session_summary()

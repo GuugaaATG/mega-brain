@@ -343,7 +343,7 @@ ANTES de marcar 5.4 como completo para uma fonte:
 │     └──────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 │     ┌─ PLAYBOOKS ──────────────────────────────────────────────────────┐    │
-│     │  → Verificar se playbook existe em /knowledge/playbooks/      │    │
+│     │  → Verificar se playbook existe em /knowledge/external/playbooks/      │    │
 │     │  → Se NÃO existe → CRIAR com frameworks do batch                 │    │
 │     │  → Se EXISTE → ADICIONAR novos frameworks/metodologias           │    │
 │     │  → Incrementar versão do playbook                                │    │

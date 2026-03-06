@@ -362,7 +362,7 @@ DISPLAY LOG:
 │  📁 Salvos:                                                                  │
 │     • FEED-LOG.json                                                          │
 │     • agents/*/MEMORY.md (atualizados)                                    │
-│     • knowledge/dossiers/ (atualizados)                                   │
+│     • knowledge/external/dossiers/ (atualizados)                                   │
 │                                                                              │
 │  ⏱️  Duração: [TIME]                                                         │
 │                                                                              │

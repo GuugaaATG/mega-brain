@@ -24,11 +24,76 @@ Executa o fluxo completo: debate entre cargos + meta-avaliacao pelo conselho (CR
 
 ---
 
+## Modo 3D (Tridimensional)
+
+O Conclave opera em 3 dimensoes de contexto:
+
+| Modo | Buckets | Quando Usar |
+|------|---------|-------------|
+| `expert-only` | B1 (External) | Perguntas teoricas / aprendizado |
+| `business` | B1 + B2 (External + Workspace) | Decisoes de negocio |
+| `full-3d` | B1 + B2 + B3 (Todos) | Decisoes estrategicas pessoais |
+| `personal` | B3 (Personal) | Reflexao pessoal |
+| `company-only` | B2 (Workspace) | Analise operacional |
+
+### Leitura em Boxes Individuais
+
+Cada agente convocado DEVE ler os buckets permitidos pelo modo:
+- **B1 (External):** knowledge/external/dna/, knowledge/external/dossiers/, knowledge/external/playbooks/
+- **B2 (Workspace):** knowledge/workspace/, logs/WORKSPACE-LOG-TEMPLATE.md
+- **B3 (Personal):** knowledge/personal/, logs/PERSONAL-LOG-TEMPLATE.md
+
+Os agentes NAO podem acessar buckets fora do modo selecionado.
+
+### Resposta com Contexto Parcial
+
+Se um bucket NAO esta disponivel no modo selecionado:
+- O agente DEVE declarar: "Sem acesso ao bucket [X] neste modo"
+- Recomendar modo mais amplo se necessario: "Para esta decisao, recomendo modo `full-3d`"
+- NUNCA inventar dados de buckets nao acessados
+
+### Dados Numericos Reais
+
+Quando em modo `business` ou `full-3d`:
+- Agentes DEVEM consultar dados reais do workspace (MRR, CAC, LTV, etc.)
+- Caminhos: knowledge/workspace/_finance/, WORKSPACE-LOG-TEMPLATE.md
+- Se dados nao existem, declarar: "Dados financeiros nao conectados"
+
+### Secao Obrigatoria na Resposta
+
+Toda resposta do Conclave DEVE incluir footer:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  CONTEXTO UTILIZADO                                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Modo: {modo selecionado}                                                   │
+│  B1 (Expert):    {SIM/NAO} - {N arquivos consultados}                      │
+│  B2 (Business):  {SIM/NAO} - {N arquivos consultados}                      │
+│  B3 (Personal):  {SIM/NAO} - {N arquivos consultados}                      │
+│  Dados reais:    {SIM/NAO} - {quais metricas}                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## INSTRUCOES DE EXECUCAO
 
 > **Workflow:** `core/workflows/wf-conclave.yaml`
 > **Templates:** `core/templates/debates/`
 > **Agents:** `agents/conclave/`
+> **Smart Context:** `core/intelligence/query_analyzer.py` + `context_assembler.py`
+
+### PRE-CONCLAVE: Smart Context Assembly
+
+ANTES de iniciar qualquer fase, executar:
+
+1. **Analise da query** via `core/intelligence/query_analyzer.py`:
+   - Detectar dominios e agentes relevantes
+2. **Montar contexto trimado** via `core/intelligence/context_assembler.py`:
+   - MEMORY.md de cada agente: apenas secoes relevantes ao tema
+   - Budget total: ~150KB (vs 1.1MB+ em full load)
+3. **Reportar economia** no header do conselho
 
 ```
 ═══════════════════════════════════════════════════════════════════════════════
@@ -38,6 +103,7 @@ SESSAO DO CONSELHO
 QUERY: {pergunta ou decisao}
 DATA: {data atual}
 VALOR EM RISCO: R$ {estimativa se possivel}
+CONTEXTO: {X}KB trimado (vs {Y}KB full, reducao {Z}%)
 
 ═══════════════════════════════════════════════════════════════════════════════
 FASE 0: FUNDAMENTO CONSTITUCIONAL

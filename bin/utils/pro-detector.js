@@ -8,10 +8,10 @@ import { readLicense, getLicenseState } from '../lib/license.js';
 
 // Premium directories from layer2-manifest.txt
 const PRO_INDICATORS = [
-  'knowledge/dossiers/persons',
-  'knowledge/playbooks',
-  'knowledge/dna',
-  'agents/persons',
+  'knowledge/external/dossiers/persons',
+  'knowledge/external/playbooks',
+  'knowledge/external/dna',
+  'agents/minds',
   'agents/cargo',
 ];
 

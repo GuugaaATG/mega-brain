@@ -169,8 +169,8 @@
 
 ## 🔗 LINKS
 
-- **Dossiê Pessoa:** → [DOSSIER-{PESSOA}.md](/knowledge/dossiers/persons/DOSSIER-{PESSOA}.md)
-- **Dossiê Tema:** → [DOSSIER-{TEMA}.md](/knowledge/dossiers/THEMES/DOSSIER-{TEMA}.md)
+- **Dossiê Pessoa:** → [DOSSIER-{PESSOA}.md](/knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md)
+- **Dossiê Tema:** → [DOSSIER-{TEMA}.md](/knowledge/external/dossiers/THEMES/DOSSIER-{TEMA}.md)
 - **Documentos Originais:**
   - [{SOURCE_ID}] → [/inbox/{path}]
 
@@ -211,7 +211,7 @@
 
 ## LINKS
 
-- **Dossiê completo:** → [DOSSIER-{PESSOA}.md](/knowledge/dossiers/persons/DOSSIER-{PESSOA}.md)
+- **Dossiê completo:** → [DOSSIER-{PESSOA}.md](/knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md)
 ```
 
 ---
@@ -316,11 +316,11 @@ Ao salvar arquivo SOURCE, indexar no ChromaDB:
 │     (Resposta direta: tudo que Cole disse sobre show rates)                │
 │                                                                             │
 │  2. CONTEXTO EXPANDIDO:                                                    │
-│     → /knowledge/dossiers/persons/DOSSIER-COLE-GORDON.md                │
+│     → /knowledge/external/dossiers/persons/DOSSIER-COLE-GORDON.md                │
 │     (Visão completa de Cole, todos os temas)                               │
 │                                                                             │
 │  3. COMPARAÇÃO MULTI-FONTE:                                                │
-│     → /knowledge/dossiers/THEMES/DOSSIER-SHOW-RATES.md                  │
+│     → /knowledge/external/dossiers/THEMES/DOSSIER-SHOW-RATES.md                  │
 │     (O que Cole + Jeremy + outros dizem)                                   │
 │                                                                             │
 │  4. DOCUMENTO ORIGINAL:                                                    │

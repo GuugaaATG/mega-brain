@@ -20,19 +20,33 @@ ARQUITETURA:
 └─────────────────────────────────────────────────────────────────────────────┘
 """
 
+import json
 import os
 import re
-import json
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 SKILLS_PATH = PROJECT_ROOT / ".claude" / "skills"
 SUBAGENTS_PATH = PROJECT_ROOT / ".claude" / "jarvis" / "sub-agents"
+AGENT_MEMORY_PATH = PROJECT_ROOT / ".claude" / "agent-memory"
 INDEX_PATH = PROJECT_ROOT / ".claude" / "mission-control" / "SKILL-INDEX.json"
 
+# Cargo agents with persistent memory in .claude/agent-memory/
+# Maps keywords → agent-memory directory name
+CARGO_AGENT_KEYWORDS = {
+    "closer": "closer",
+    "business consultant": "closer",
+    "/ask closer": "closer",
+    "cfo": "cfo",
+    "chief financial": "cfo",
+    "/ask cfo": "cfo",
+    "cro": "cro",
+    "chief revenue": "cro",
+    "/ask cro": "cro",
+}
 
-def scan_skills() -> List[Tuple[Path, str]]:
+
+def scan_skills() -> list[tuple[Path, str]]:
     """Lista todas as pastas de skills válidas com tipo."""
     items = []
 
@@ -55,7 +69,7 @@ def scan_skills() -> List[Tuple[Path, str]]:
     return items
 
 
-def extract_metadata(item_path: Path, item_type: str) -> Dict:
+def extract_metadata(item_path: Path, item_type: str) -> dict:
     """Extrai metadados de SKILL.md ou AGENT.md."""
 
     if item_type == "skill":
@@ -122,7 +136,7 @@ def extract_metadata(item_path: Path, item_type: str) -> Dict:
     return metadata
 
 
-def build_index() -> Dict:
+def build_index() -> dict:
     """Constrói índice completo de skills e sub-agents."""
     items = scan_skills()
 
@@ -167,12 +181,12 @@ def build_index() -> Dict:
     return index
 
 
-def match_prompt(prompt: str, index: Dict = None) -> List[Dict]:
+def match_prompt(prompt: str, index: dict = None) -> list[dict]:
     """Retorna skills e sub-agents que matcham com o prompt."""
     if index is None:
         if INDEX_PATH.exists():
             try:
-                with open(INDEX_PATH, 'r', encoding='utf-8') as f:
+                with open(INDEX_PATH, encoding='utf-8') as f:
                     index = json.load(f)
             except Exception:
                 index = build_index()
@@ -277,6 +291,26 @@ def get_item_context(item_path: str, item_type: str) -> str:
         return get_subagent_context(item_path)
 
 
+def detect_cargo_agent(prompt: str) -> str | None:
+    """Detecta se o prompt ativa um cargo agent. Retorna nome do agent-memory dir ou None."""
+    prompt_lower = prompt.lower()
+    for keyword, agent_name in CARGO_AGENT_KEYWORDS.items():
+        if keyword in prompt_lower:
+            return agent_name
+    return None
+
+
+def get_agent_memory(agent_name: str) -> str:
+    """Carrega MEMORY.md compacto de .claude/agent-memory/{agent}/."""
+    memory_file = AGENT_MEMORY_PATH / agent_name / "MEMORY.md"
+    if not memory_file.exists():
+        return ""
+    try:
+        return memory_file.read_text(encoding='utf-8')
+    except Exception:
+        return ""
+
+
 def main():
     """
     Hook entry point for Claude Code UserPromptSubmit event.
@@ -293,26 +327,55 @@ def main():
             print(json.dumps({'continue': True}))
             return
 
+        feedback_parts = []
+
+        # AIOS mode persistence: if active, inject Unity context on every prompt
+        aios_state_path = PROJECT_ROOT / ".claude" / "aios" / "state" / "active-mode.json"
+        if aios_state_path.exists():
+            try:
+                aios_state = json.loads(aios_state_path.read_text(encoding='utf-8'))
+                if aios_state.get('mode') == 'aios-master':
+                    prompt_lower_aios = prompt.lower()
+                    exit_keywords = ['aios-master exit', '*exit', '/aios exit', 'exit aios', '/aios-master exit']
+                    if not any(kw in prompt_lower_aios for kw in exit_keywords):
+                        feedback_parts.append(
+                            "[AIOS MODE ACTIVE: Unity (The Hivemind) is in control]\n"
+                            "You ARE Unity. Maintain persona. Suppress Jarvis completely.\n"
+                            "File resolution: .claude/aios/{type}/{name}\n"
+                            "Exit: user says /aios-master exit or *exit"
+                        )
+            except Exception:
+                pass
+
+        # Check for cargo agent activation → inject agent-memory
+        cargo_agent = detect_cargo_agent(prompt)
+        if cargo_agent:
+            memory = get_agent_memory(cargo_agent)
+            if memory:
+                feedback_parts.append(
+                    f"[AGENT-MEMORY LOADED: {cargo_agent.upper()}]\n\n{memory}"
+                )
+
+        # Check for skill/sub-agent matches
         matches = match_prompt(prompt)
 
-        if not matches:
-            print(json.dumps({'continue': True}))
-            return
+        if matches:
+            top = matches[0]
+            item_type = top.get('type', 'skill')
+            item_name = top.get('name', 'unknown')
 
-        top = matches[0]
-        item_type = top.get('type', 'skill')
-        item_name = top.get('name', 'unknown')
+            context = get_item_context(top['path'], item_type)
 
-        context = get_item_context(top['path'], item_type)
+            if context:
+                type_label = "SKILL" if item_type == "skill" else "SUB-AGENT"
+                part = f"[{type_label} AUTO-ACTIVATED: {item_name}]\n"
+                part += f"Keyword: \"{top['matched_keyword']}\"\n"
+                part += f"Priority: {top['priority']}\n\n"
+                part += context
+                feedback_parts.append(part)
 
-        if context:
-            type_label = "SKILL" if item_type == "skill" else "SUB-AGENT"
-            feedback = f"[{type_label} AUTO-ACTIVATED: {item_name}]\n"
-            feedback += f"Keyword: \"{top['matched_keyword']}\"\n"
-            feedback += f"Priority: {top['priority']}\n\n"
-            feedback += context
-
-            print(json.dumps({'continue': True, 'feedback': feedback}))
+        if feedback_parts:
+            print(json.dumps({'continue': True, 'feedback': '\n\n---\n\n'.join(feedback_parts)}))
         else:
             print(json.dumps({'continue': True}))
 

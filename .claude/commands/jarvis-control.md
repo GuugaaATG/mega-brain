@@ -76,12 +76,12 @@ Estes comandos são usados durante o checkpoint após Phase 6 do Pipeline Jarvis
 📄 CRIADOS/ATUALIZADOS NESTA SESSÃO:
 
    1. DOSSIER-{PESSOA}.md (NOVO)
-      Path: /knowledge/dossiers/persons/DOSSIER-{PESSOA}.md
+      Path: /knowledge/external/dossiers/persons/DOSSIER-{PESSOA}.md
       Insights: {N}
       Frameworks: {N}
 
    2. DOSSIER-{TEMA}.md (ATUALIZADO)
-      Path: /knowledge/dossiers/THEMES/DOSSIER-{TEMA}.md
+      Path: /knowledge/external/dossiers/THEMES/DOSSIER-{TEMA}.md
       Novos insights: +{N}
 
 ───────────────────────────────────────────────────────────────────────────────

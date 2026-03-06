@@ -64,10 +64,10 @@ L1 (Community) — The open-source shell
 L2 (Premium) — L1 + populated knowledge content
 ├── agents/minds/      → Expert mind-clone agents (populated)
 ├── agents/cargo/      → Functional role agents (populated)
-├── knowledge/dossiers/→ Person and theme dossiers
-├── knowledge/playbooks/→ Actionable playbooks
-├── knowledge/dna/     → Cognitive DNA schemas
-├── knowledge/sources/ → Source material references
+├── knowledge/external/dossiers/→ Person and theme dossiers
+├── knowledge/external/playbooks/→ Actionable playbooks
+├── knowledge/external/dna/     → Cognitive DNA schemas
+├── knowledge/external/sources/ → Source material references
 └── artifacts/         → Pipeline processing outputs
 
 L3 (Personal) — Everything, including user-specific data
@@ -498,9 +498,9 @@ agents/cargo/**             # Functional agents (except .gitkeep)
 agents/sua-empresa/**       # Company data (except .gitkeep + README)
 inbox/**                    # Raw input materials (except .gitkeep)
 artifacts/chunks/**         # Pipeline chunks (except .gitkeep)
-knowledge/dossiers/**       # Dossiers (except .gitkeep)
-knowledge/playbooks/**      # Playbooks (except .gitkeep)
-knowledge/dna/**            # DNA schemas (except .gitkeep)
+knowledge/external/dossiers/**       # Dossiers (except .gitkeep)
+knowledge/external/playbooks/**      # Playbooks (except .gitkeep)
+knowledge/external/dna/**            # DNA schemas (except .gitkeep)
 logs/**                     # Logs (except .gitkeep + README)
 ```
 
@@ -541,8 +541,8 @@ Lists all paths that belong in the L1 (Community) package. Used by the Layer 2 p
 Lists additional premium-only paths to add on top of Layer 1:
 - `agents/minds/` — Expert mind clones
 - `agents/cargo/` — Functional role agents
-- `knowledge/dossiers/` — Dossiers
-- `knowledge/playbooks/` — Playbooks
+- `knowledge/external/dossiers/` — Dossiers
+- `knowledge/external/playbooks/` — Playbooks
 - etc.
 
 Has a `LAYER 3 EXCLUSIONS` section that marks paths to skip.

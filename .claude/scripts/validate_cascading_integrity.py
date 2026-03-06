@@ -31,9 +31,9 @@ PROJECT_ROOT = SCRIPT_DIR.parent.parent
 LOGS_PATH = PROJECT_ROOT / "logs"
 BATCHES_PATH = LOGS_PATH / "batches"
 AGENTS_PATH = PROJECT_ROOT / "agents"
-PLAYBOOKS_PATH = PROJECT_ROOT / "knowledge" / "playbooks"
-DOSSIERS_PATH = PROJECT_ROOT / "knowledge" / "dossiers"
-DNA_PATH = PROJECT_ROOT / "knowledge" / "dna"
+PLAYBOOKS_PATH = PROJECT_ROOT / "knowledge" / "external" / "playbooks"
+DOSSIERS_PATH = PROJECT_ROOT / "knowledge" / "external" / "dossiers"
+DNA_PATH = PROJECT_ROOT / "knowledge" / "external" / "dna"
 VERIFIED_LOG = LOGS_PATH / "cascading-verified.jsonl"
 
 # ============================================================================
@@ -143,7 +143,7 @@ def resolve_agent_path(agent_name: str) -> Optional[Path]:
     return None
 
 def resolve_playbook_path(playbook_name: str) -> Optional[Path]:
-    """Resolve playbook name to path in knowledge/playbooks/"""
+    """Resolve playbook name to path in knowledge/external/playbooks/"""
     if not PLAYBOOKS_PATH.exists():
         return None
 
@@ -160,7 +160,7 @@ def resolve_playbook_path(playbook_name: str) -> Optional[Path]:
     return None
 
 def resolve_dossier_path(dossier_name: str) -> Optional[Path]:
-    """Resolve dossier name to path in knowledge/dossiers/**/"""
+    """Resolve dossier name to path in knowledge/external/dossiers/**/"""
     if not DOSSIERS_PATH.exists():
         return None
 
@@ -172,7 +172,7 @@ def resolve_dossier_path(dossier_name: str) -> Optional[Path]:
     return None
 
 def resolve_dna_path(dna_name: str) -> Optional[Path]:
-    """Resolve DNA name to path in knowledge/dna/persons/*/DNA.yaml"""
+    """Resolve DNA name to path in knowledge/external/dna/persons/*/DNA.yaml"""
     if not DNA_PATH.exists():
         return None
 

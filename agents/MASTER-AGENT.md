@@ -269,8 +269,8 @@ Iniciando processamento de [Z] novos arquivos...
     - Multi-área → Múltiplos agentes
 
 3.6 ATUALIZAR KNOWLEDGE BASES:
-    - Output para: `/knowledge/SOURCES/{FONTE}/{TEMA}/`
-    - Dossiês compilados em: `/knowledge/dossiers/persons/` e `THEMES/`
+    - Output para: `/knowledge/external/sources/{FONTE}/{TEMA}/`
+    - Dossiês compilados em: `/knowledge/external/dossiers/persons/` e `THEMES/`
     - Cada agente consulta seu dossiê relevante
     - Sempre incluir: fonte, arquivo, classificação
     - Conectar com conhecimento anterior
@@ -455,13 +455,13 @@ Com as respostas em mãos:
    - Escolher o mais adequado para o contexto
    - Documentar decisão
    - Consultar dossiês de tema para visão consolidada:
-     → `/knowledge/dossiers/THEMES/DOSSIER-{TEMA}.md`
+     → `/knowledge/external/dossiers/THEMES/DOSSIER-{TEMA}.md`
 
 4. GERAR Decision Framework:
    /system/SYNTHESIS/decision-framework.md
 
 5. CRIAR outline do playbook:
-   /knowledge/playbooks/drafts/00-OUTLINE.md
+   /knowledge/external/playbooks/drafts/00-OUTLINE.md
 ```
 
 **ETAPA 5: GERAÇÃO DO PLAYBOOK**
@@ -480,7 +480,7 @@ Estrutura:
 - Parte VI: Operations & Scale
 - Parte VII: Implementation Roadmap
 
-Salvar em: /knowledge/playbooks/final/MASTER-PLAYBOOK-v1.0.md
+Salvar em: /knowledge/external/playbooks/final/MASTER-PLAYBOOK-v1.0.md
 ```
 
 ---
